@@ -43,98 +43,83 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:0 32px
   background:linear-gradient(135deg,var(--accent),var(--purple));padding:4px 12px;border-radius:20px}
 @media(max-width:480px){nav{padding:0 16px}}
 
-.hero{position:relative;z-index:2;text-align:center;padding:76px 20px 40px;max-width:700px;margin:0 auto}
+/* ===== HERO ===== */
+.hero{position:relative;z-index:2;text-align:center;padding:72px 20px 36px;max-width:780px;margin:0 auto}
 .hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;
   color:var(--muted);letter-spacing:.08em;text-transform:uppercase;
   background:rgba(255,255,255,.8);border:1px solid var(--border);border-radius:20px;
   padding:5px 14px;margin-bottom:20px;backdrop-filter:blur(8px)}
 .hero-tag span{color:var(--accent)}
-h1{font-family:'Syne',sans-serif;font-size:58px;font-weight:800;letter-spacing:-3px;
-  line-height:1.0;color:var(--black);margin-bottom:14px}
+
+/* Hero title row with 3D icons */
+.hero-title-row{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:14px}
+.hero-icon-3d{
+  font-size:52px;line-height:1;
+  filter:drop-shadow(0 8px 18px rgba(109,40,217,.3)) drop-shadow(0 3px 6px rgba(0,0,0,.15));
+  animation:icon3d 4s ease-in-out infinite;
+  flex-shrink:0;
+}
+.hero-icon-3d.left{animation-delay:0s}
+.hero-icon-3d.right{animation-delay:1.5s;font-size:46px}
+@keyframes icon3d{
+  0%,100%{transform:translateY(0) rotate(-3deg) scale(1)}
+  50%{transform:translateY(-10px) rotate(4deg) scale(1.06)}
+}
+h1{font-family:'Syne',sans-serif;font-size:54px;font-weight:800;letter-spacing:-2.5px;
+  line-height:1.0;color:var(--black)}
 h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--purple));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:16px;color:var(--muted);font-weight:400;line-height:1.65;
-  margin-bottom:36px;max-width:460px;margin-left:auto;margin-right:auto}
-@media(max-width:640px){h1{font-size:36px;letter-spacing:-1.5px}.hero{padding:56px 16px 28px}.hero-sub{font-size:14px}}
+.hero-sub{font-size:15px;color:var(--muted);font-weight:400;line-height:1.65;
+  margin-bottom:30px;max-width:460px;margin-left:auto;margin-right:auto}
+@media(max-width:640px){
+  h1{font-size:30px;letter-spacing:-1.5px}
+  .hero{padding:48px 16px 24px}
+  .hero-sub{font-size:13px}
+  .hero-icon-3d{font-size:34px}
+  .hero-icon-3d.right{font-size:30px}
+  .hero-title-row{gap:10px}
+}
 
-/* ===== SEARCH BOX ===== */
-.search-outer{max-width:640px;margin:0 auto 10px;position:relative}
-.search-box{
-  display:flex;flex-direction:column;
+/* ===== SEARCH CARD ===== */
+.search-card{
+  max-width:660px;margin:0 auto 10px;
   background:var(--white);
-  border-radius:20px;
-  border:2px solid transparent;
-  background-clip:padding-box;
-  box-shadow:0 4px 24px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.04);
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-  position:relative;overflow:hidden;
+  border-radius:22px;
+  border:1.5px solid var(--border);
+  box-shadow:0 8px 40px rgba(0,0,0,.09),0 2px 8px rgba(0,0,0,.04);
+  overflow:hidden;
+  transition:box-shadow .3s;
 }
-.search-box::before{
-  content:'';position:absolute;inset:-2px;border-radius:22px;
-  background:linear-gradient(135deg,var(--purple),var(--accent),#06b6d4);
-  z-index:-1;opacity:0;transition:opacity .3s;
+.search-card:focus-within{
+  border-color:transparent;
+  box-shadow:0 0 0 2px var(--purple),0 12px 50px rgba(109,40,217,.18);
 }
-.search-box:focus-within{
-  box-shadow:0 8px 36px rgba(109,40,217,.18),0 2px 8px rgba(0,0,0,.06);
-}
-.search-box:focus-within::before{opacity:1}
 
-/* Top row: input */
-.search-top{display:flex;align-items:center;gap:10px;padding:14px 16px 10px 20px}
+/* Top row: input + button */
+.search-top{
+  display:flex;align-items:center;gap:0;padding:6px 6px 6px 18px;
+  border-bottom:1.5px solid var(--border);
+}
 .search-ai-icon{
-  font-size:18px;flex-shrink:0;
+  font-size:18px;flex-shrink:0;margin-right:10px;
   background:linear-gradient(135deg,var(--purple),var(--accent));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   animation:ai-pulse 3s ease-in-out infinite;
 }
 @keyframes ai-pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
-.search-box input{
+.search-card input{
   flex:1;border:none;outline:none;font-size:15px;
-  font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:transparent;min-width:0;
+  font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:transparent;
+  padding:10px 0;min-width:0;
 }
-.search-box input::placeholder{color:#c0bdb8}
+.search-card input::placeholder{color:#c0bdb8}
 
-/* Bottom row: controls + button */
-.search-bottom{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 10px 10px 14px;
-  border-top:1px solid var(--border);
-}
-
-/* Industry dropdown pill */
-.search-pill{
-  display:flex;align-items:center;gap:5px;
-  background:var(--chip);border:1.5px solid var(--border);
-  border-radius:10px;padding:6px 12px;cursor:pointer;
-  font-size:12px;font-weight:600;color:var(--ink);
-  font-family:'Plus Jakarta Sans',sans-serif;
-  transition:all .2s;position:relative;white-space:nowrap;
-}
-.search-pill:hover{border-color:var(--purple);color:var(--purple);background:#f0ebff}
-.search-pill svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.pill-icon{font-size:13px}
-
-/* Domain style pill */
-.domain-pill{
-  display:flex;align-items:center;gap:5px;
-  background:var(--chip);border:1.5px solid var(--border);
-  border-radius:10px;padding:6px 12px;cursor:pointer;
-  font-size:12px;font-weight:700;color:var(--ink);
-  font-family:'Syne',sans-serif;
-  transition:all .2s;white-space:nowrap;
-}
-.domain-pill:hover{border-color:var(--purple);color:var(--purple);background:#f0ebff}
-.domain-pill.active{background:var(--black);color:#fff;border-color:var(--black)}
-
-.search-spacer{flex:1}
-
-/* Generate button */
 .gen-btn{
   background:linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 50%,#0c0c0c 100%);
-  color:#fff;border:none;padding:10px 20px;border-radius:12px;
+  color:#fff;border:none;padding:12px 22px;border-radius:14px;
   font-size:13px;font-weight:700;cursor:pointer;
   font-family:'Plus Jakarta Sans',sans-serif;
-  white-space:nowrap;display:flex;align-items:center;gap:7px;
+  white-space:nowrap;display:flex;align-items:center;gap:8px;
   transition:all .25s cubic-bezier(.4,0,.2,1);flex-shrink:0;
   position:relative;overflow:hidden;
   box-shadow:0 2px 12px rgba(0,0,0,.25);
@@ -148,78 +133,78 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--pu
 .gen-btn:hover{transform:scale(.98);box-shadow:0 4px 20px rgba(109,40,217,.35)}
 .gen-btn:active{transform:scale(.95)}
 .gen-btn-text,.gen-btn-icon{position:relative;z-index:1}
-.gen-btn-icon{font-size:14px}
-
-/* Search icon button */
-.search-icon-btn{
-  width:36px;height:36px;border-radius:10px;background:var(--chip);
-  border:1.5px solid var(--border);cursor:pointer;
+.gen-btn-icon{
+  width:20px;height:20px;border-radius:6px;
+  background:rgba(255,255,255,.15);
   display:flex;align-items:center;justify-content:center;
-  transition:all .2s;flex-shrink:0;
+  font-size:11px;transition:transform .25s;
 }
-.search-icon-btn:hover{background:#f0ebff;border-color:var(--purple)}
-.search-icon-btn svg{width:16px;height:16px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gen-btn:hover .gen-btn-icon{transform:rotate(20deg) scale(1.1)}
+@media(max-width:480px){.gen-btn{padding:10px 13px;font-size:12px}}
 
-/* Dropdown menus */
-.dropdown-wrap{position:relative}
-.dropdown-menu{
-  position:absolute;top:calc(100% + 8px);left:0;
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:16px;padding:8px;min-width:220px;
-  box-shadow:0 12px 40px rgba(0,0,0,.12);z-index:200;
+/* Bottom row: industries + TLD */
+.search-bottom{
+  display:flex;align-items:stretch;min-height:48px;
+}
+.search-bottom-divider{width:1.5px;background:var(--border);flex-shrink:0}
+
+/* Industry selector */
+.ind-select-wrap{
+  flex:1;display:flex;align-items:center;padding:0 14px;gap:8px;cursor:pointer;
+  position:relative;
+}
+.ind-select-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
+.ind-selected{font-size:13px;font-weight:600;color:var(--ink);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ind-arrow{font-size:10px;color:var(--muted);flex-shrink:0;transition:transform .2s}
+.ind-select-wrap.open .ind-arrow{transform:rotate(180deg)}
+
+/* Industry dropdown */
+.ind-dropdown{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;
+  background:var(--white);border:1.5px solid var(--border);border-radius:16px;
+  box-shadow:0 16px 48px rgba(0,0,0,.14);z-index:200;
+  max-height:280px;overflow-y:auto;padding:8px;
   display:none;
+  animation:ddIn .18s cubic-bezier(.34,1.4,.64,1);
 }
-.dropdown-menu.open{display:block;animation:dd-in .18s cubic-bezier(.34,1.4,.64,1)}
-@keyframes dd-in{from{opacity:0;transform:translateY(-6px) scale(.97)}to{opacity:1;transform:none}}
-.dd-label{font-size:9px;font-weight:800;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px 6px;display:block}
-.dd-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;cursor:pointer;font-size:12px;font-weight:600;color:var(--ink);transition:all .15s}
-.dd-item:hover{background:var(--chip)}
-.dd-item.selected{background:#f0ebff;color:var(--purple)}
-.dd-item-emoji{font-size:16px;width:22px;text-align:center}
-.dd-divider{height:1px;background:var(--border);margin:4px 0}
+@keyframes ddIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.ind-dropdown.open{display:block}
+.ind-opt{
+  display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:10px;
+  cursor:pointer;font-size:13px;font-weight:600;color:var(--ink);transition:background .12s;
+}
+.ind-opt:hover,.ind-opt.active{background:var(--chip)}
+.ind-opt-emoji{font-size:16px;flex-shrink:0}
+.ind-opt-name{flex:1}
 
-/* Domain dropdown */
-.domain-menu{min-width:160px}
-.dom-opt{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:700;color:var(--ink);transition:all .15s;font-family:'Syne',sans-serif}
-.dom-opt:hover{background:var(--chip)}
-.dom-opt.selected{background:var(--black);color:#fff;border-radius:10px}
-.dom-badge{font-size:9px;font-weight:600;background:rgba(109,40,217,.1);color:var(--purple);padding:2px 7px;border-radius:6px;margin-left:auto}
-.dom-opt.selected .dom-badge{background:rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
+/* TLD selector */
+.tld-select-wrap{
+  display:flex;align-items:center;gap:6px;padding:0 14px;flex-shrink:0;
+  border-left:1.5px solid var(--border);
+  position:relative;
+}
+.tld-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
+.tld-pills{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto}
+.tld-pills::-webkit-scrollbar{display:none}
+.tld-btn{font-size:11px;font-weight:700;padding:5px 11px;border-radius:20px;
+  border:1.5px solid var(--border);color:var(--muted);cursor:pointer;
+  background:var(--white);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s;white-space:nowrap}
+.tld-btn:hover{border-color:var(--purple);color:var(--purple)}
+.tld-btn.on{background:var(--black);color:#fff;border-color:var(--black)}
 
-@media(max-width:480px){.gen-btn{padding:9px 14px;font-size:12px}.search-bottom{gap:6px;padding:8px 8px 8px 10px}}
+@media(max-width:560px){
+  .search-bottom{flex-direction:column}
+  .search-bottom-divider{width:100%;height:1.5px}
+  .tld-select-wrap{border-left:none;border-top:1.5px solid var(--border);padding:10px 14px}
+  .ind-dropdown{right:0;left:0}
+}
 
-/* ===== STATS — only 2 ===== */
 .stats{position:relative;z-index:2;display:flex;justify-content:center;
-  gap:48px;flex-wrap:wrap;max-width:400px;margin:0 auto 36px;padding:0 16px}
+  gap:28px;flex-wrap:wrap;max-width:560px;margin:0 auto 36px;padding:0 16px}
 .stat{text-align:center}
-.stat-n{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;
+.stat-n{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;
   color:var(--black);letter-spacing:-1px;line-height:1}
-.stat-l{font-size:11px;color:var(--muted);margin-top:3px}
-
-/* ===== INDUSTRIES — horizontal scroll pill style ===== */
-.industry-wrap{position:relative;z-index:2;max-width:860px;margin:0 auto 14px;padding:0 16px}
-.sec-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
-  letter-spacing:.1em;margin-bottom:10px;text-align:center}
-
-.ind-scroll{
-  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
-}
-.ind-pill{
-  display:flex;align-items:center;gap:6px;
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:100px;padding:7px 16px;cursor:pointer;
-  font-size:12px;font-weight:600;color:var(--ink);
-  transition:all .2s cubic-bezier(.34,1.4,.64,1);
-  white-space:nowrap;
-}
-.ind-pill:hover{
-  transform:translateY(-2px);
-  border-color:var(--purple);color:var(--purple);
-  background:#f5f0ff;
-  box-shadow:0 4px 16px rgba(109,40,217,.12);
-}
-.ind-pill:active{transform:scale(.96)}
-.ind-emoji{font-size:14px;line-height:1}
+.stat-l{font-size:11px;color:var(--muted);margin-top:2px}
 
 .liked-bar{position:relative;z-index:2;max-width:900px;margin:20px auto 0;padding:0 20px;display:none}
 .liked-inner{background:var(--white);border-radius:12px;padding:12px 16px;border:1px solid var(--border)}
@@ -231,13 +216,11 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--pu
 
 .results{position:relative;z-index:2;max-width:1100px;margin:32px auto 0;padding:0 20px 48px}
 .res-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:20px;text-align:center;text-transform:uppercase}
-
 .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 @media(max-width:1024px){.logo-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:768px){.logo-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:480px){.logo-grid{grid-template-columns:repeat(2,1fr)}}
 
-/* Card styles — overlay shown only on hover */
 .lc{
   position:relative;border-radius:16px;overflow:hidden;cursor:pointer;
   aspect-ratio:1.4/1;display:flex;flex-direction:column;align-items:center;
@@ -245,89 +228,39 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--pu
   border:1.5px solid transparent;
 }
 .lc:hover{transform:scale(1.04);box-shadow:0 8px 28px rgba(0,0,0,.18)}
-
-.lc-top-badge{
-  position:absolute;top:8px;left:8px;
-  font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-  background:rgba(255,255,255,.22);color:rgba(255,255,255,.95);
-  border:1px solid rgba(255,255,255,.3);border-radius:5px;padding:2px 7px;
-  z-index:2;backdrop-filter:blur(4px)
-}
-
-.lc-like{
-  position:absolute;top:8px;right:8px;z-index:4;
-  width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:14px;
-  border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);
-  display:flex;align-items:center;justify-content:center;
-  transition:all .15s;backdrop-filter:blur(4px);color:rgba(255,255,255,.8)
-}
+.lc-top-badge{position:absolute;top:8px;left:8px;font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.22);color:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.3);border-radius:5px;padding:2px 7px;z-index:2;backdrop-filter:blur(4px)}
+.lc-like{position:absolute;top:8px;right:8px;z-index:2;width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:14px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;transition:all .15s;backdrop-filter:blur(4px);color:rgba(255,255,255,.8)}
 .lc-like:hover{background:rgba(255,255,255,.3);color:#fff}
 .lc-like.liked{background:var(--accent);border-color:var(--accent);color:#fff}
-
-.lc-name{
-  font-size:15px;font-weight:700;text-align:center;
-  letter-spacing:-.2px;padding:0 10px;line-height:1.2;
-  word-break:break-all;z-index:1
-}
-
-.avail-dot{
-  position:absolute;bottom:8px;right:10px;
-  width:8px;height:8px;border-radius:50%;z-index:2
-}
+.lc-name{font-size:15px;font-weight:700;text-align:center;letter-spacing:-.2px;padding:0 10px;line-height:1.2;word-break:break-all;z-index:1}
+.avail-dot{position:absolute;bottom:8px;right:10px;width:8px;height:8px;border-radius:50%;z-index:2}
 .avail-dot.available{background:#4ade80;box-shadow:0 0 6px rgba(74,222,128,.8)}
 .avail-dot.checking{background:#fbbf24;animation:blink 1s ease-in-out infinite}
 .avail-dot.unavailable{background:#f87171}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* Overlay — ONLY on hover, hidden by default */
-.lc-overlay{
-  position:absolute;inset:0;background:rgba(0,0,0,.6);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-  opacity:0;transition:opacity .2s;z-index:3;border-radius:16px;
-  padding:12px;
-}
+.lc-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;opacity:0;transition:opacity .18s;z-index:3;border-radius:16px}
 .lc:hover .lc-overlay{opacity:1}
-.lov-btn{
-  font-size:12px;font-weight:700;padding:9px 0;border-radius:9px;
-  text-decoration:none;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;
-  cursor:pointer;border:none;width:140px;transition:opacity .1s;display:block;
-}
+.lov-btn{font-size:11px;font-weight:700;padding:7px 20px;border-radius:8px;text-decoration:none;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;width:120px;transition:opacity .1s}
 .lov-buy{background:var(--white);color:var(--black)}
 .lov-chk{background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.4)}
 .lov-buy:hover{opacity:.88}
 .lov-chk:hover{background:rgba(255,255,255,.28)}
 
-/* Card color schemes — unchanged */
-.cs-0{background:#f5a623;color:#7a4f00}
-.cs-0 .lc-name{color:#3d2600;font-family:'Syne',sans-serif}
-.cs-1{background:#f0f0ed;color:#2c2c2c}
-.cs-1 .lc-name{color:#1a1a1a;font-family:'Space Grotesk',sans-serif;font-weight:600}
-.cs-2{background:#f8f8f8;color:#111}
-.cs-2 .lc-name{color:#111;font-family:'Montserrat',sans-serif;letter-spacing:.5px;font-size:13px}
-.cs-3{background:#1a1a2e;color:#e8d5ff}
-.cs-3 .lc-name{color:#e8d5ff;font-family:'Syne',sans-serif;font-size:13px}
-.cs-4{background:#0a2240;color:#4ab3f4}
-.cs-4 .lc-name{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}
-.cs-5{background:#1e3a2f;color:#7dcfb6}
-.cs-5 .lc-name{color:#a8edda;font-family:'Poppins',sans-serif;font-size:13px}
-.cs-6{background:#2d1b69;color:#c4b5fd}
-.cs-6 .lc-name{color:#e9d5ff;font-family:'Raleway',sans-serif;font-size:14px;font-weight:800}
-.cs-7{background:#1a1a1a;color:#ff6b35}
-.cs-7 .lc-name{color:#ff6b35;font-family:'Space Grotesk',sans-serif;font-weight:700}
-.cs-8{background:#fff;color:#111;border:1.5px solid #e0e0e0 !important}
-.cs-8 .lc-name{color:#111;font-family:'DM Serif Display',sans-serif;font-size:14px;font-style:italic}
-.cs-9{background:#0f172a;color:#38bdf8}
-.cs-9 .lc-name{color:#38bdf8;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px}
-.cs-10{background:#fdf2f8;color:#831843}
-.cs-10 .lc-name{color:#9d174d;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800}
-.cs-11{background:#f97316;color:#fff}
-.cs-11 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-weight:800}
-.cs-12{background:#14532d;color:#bbf7d0}
-.cs-12 .lc-name{color:#bbf7d0;font-family:'Poppins',sans-serif;font-size:13px}
-.cs-13{background:#312e81;color:#c7d2fe}
-.cs-13 .lc-name{color:#e0e7ff;font-family:'Raleway',sans-serif;font-size:13px;font-weight:800}
-.cs-14{background:#7c3aed;color:#fff}
-.cs-14 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-size:14px;font-weight:800}
+.cs-0{background:#f5a623;color:#7a4f00}.cs-0 .lc-name{color:#3d2600;font-family:'Syne',sans-serif}
+.cs-1{background:#f0f0ed;color:#2c2c2c}.cs-1 .lc-name{color:#1a1a1a;font-family:'Space Grotesk',sans-serif;font-weight:600}
+.cs-2{background:#f8f8f8;color:#111}.cs-2 .lc-name{color:#111;font-family:'Montserrat',sans-serif;letter-spacing:.5px;font-size:13px}
+.cs-3{background:#1a1a2e;color:#e8d5ff}.cs-3 .lc-name{color:#e8d5ff;font-family:'Syne',sans-serif;font-size:13px}
+.cs-4{background:#0a2240;color:#4ab3f4}.cs-4 .lc-name{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}
+.cs-5{background:#1e3a2f;color:#7dcfb6}.cs-5 .lc-name{color:#a8edda;font-family:'Poppins',sans-serif;font-size:13px}
+.cs-6{background:#2d1b69;color:#c4b5fd}.cs-6 .lc-name{color:#e9d5ff;font-family:'Raleway',sans-serif;font-size:14px;font-weight:800}
+.cs-7{background:#1a1a1a;color:#ff6b35}.cs-7 .lc-name{color:#ff6b35;font-family:'Space Grotesk',sans-serif;font-weight:700}
+.cs-8{background:#fff;color:#111;border:1.5px solid #e0e0e0 !important}.cs-8 .lc-name{color:#111;font-family:'DM Serif Display',sans-serif;font-size:14px;font-style:italic}
+.cs-9{background:#0f172a;color:#38bdf8}.cs-9 .lc-name{color:#38bdf8;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px}
+.cs-10{background:#fdf2f8;color:#831843}.cs-10 .lc-name{color:#9d174d;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800}
+.cs-11{background:#f97316;color:#fff}.cs-11 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-weight:800}
+.cs-12{background:#14532d;color:#bbf7d0}.cs-12 .lc-name{color:#bbf7d0;font-family:'Poppins',sans-serif;font-size:13px}
+.cs-13{background:#312e81;color:#c7d2fe}.cs-13 .lc-name{color:#e0e7ff;font-family:'Raleway',sans-serif;font-size:13px;font-weight:800}
+.cs-14{background:#7c3aed;color:#fff}.cs-14 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-size:14px;font-weight:800}
 
 /* ===== AI LOADING ===== */
 .ai-loader{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;gap:28px}
@@ -352,7 +285,6 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--pu
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.svc-grid{grid-template-columns:repeat(1,1fr)}}
-
 .svc-card{border-radius:22px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;position:relative;min-height:340px;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.3,.64,1),box-shadow .25s;border:none}
 .svc-card:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 20px 50px rgba(0,0,0,.22)}
 .svc-card.card-tm{background:linear-gradient(145deg,#667eea,#764ba2)}
@@ -411,9 +343,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
 @media(max-width:520px){footer{padding:16px;justify-content:center;text-align:center}}
 
 @media(max-width:640px){
-  .results,.services,.how,.industry-wrap,.liked-bar,.monkb-wrap{padding-left:14px;padding-right:14px}
-  .svc-grid{grid-template-columns:1fr}
-  .stats{gap:24px;padding:0 12px}
+  .results,.services,.how,.monkb-wrap{padding-left:14px;padding-right:14px}
+  .stats{gap:16px;padding:0 12px}
 }
 
 /* ===== RESULTS PAGE ===== */
@@ -437,8 +368,6 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
 .rp-saved-pill button{background:none;border:none;cursor:pointer;font-size:16px;color:#f97316;line-height:1;padding:0}
 .rp-grid-wrap{max-width:1100px;margin:20px auto 60px;padding:0 20px}
 .rp-res-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:18px;text-align:center;text-transform:uppercase}
-
-/* Results page card styles */
 .lc{border-radius:16px;overflow:hidden;display:flex;flex-direction:column;border:1.5px solid var(--border);transition:transform .25s cubic-bezier(.34,1.3,.64,1),box-shadow .25s;animation:cardIn .4s ease both}
 @keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
 .lc:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 36px rgba(0,0,0,.15)}
@@ -448,17 +377,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
 .lc-avail.av{background:#4ade80;box-shadow:0 0 7px rgba(74,222,128,.9)}
 .lc-avail.un{background:#f87171}
 .lc-name{font-size:13px;font-weight:700;text-align:center;padding:0 8px;line-height:1.3;word-break:break-all}
-/* Actions — hidden by default, show on hover */
-.lc-actions{
-  padding:8px 10px 10px;display:flex;flex-direction:column;gap:6px;
-  max-height:0;overflow:hidden;opacity:0;
-  transition:max-height .25s ease,opacity .2s ease,padding .25s ease;
-  padding-top:0;padding-bottom:0;
-}
-.lc:hover .lc-actions{
-  max-height:80px;opacity:1;
-  padding:8px 10px 10px;
-}
+.lc-actions{padding:8px 10px 10px;display:flex;flex-direction:column;gap:6px}
 .lc-row{display:flex;gap:6px;align-items:center}
 .lc-like{width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:17px;border:none;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;background:rgba(255,255,255,.25);color:#fff}
 .lc-like:hover{background:rgba(255,107,53,.3);transform:scale(1.1)}
@@ -468,8 +387,6 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
 .lov-buy:hover{background:#fff}
 .lov-chk{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
 .lov-chk:hover{background:rgba(255,255,255,.25)}
-
-/* Card color schemes for results page */
 .cs-0 .lc-logo{background:linear-gradient(135deg,#667eea,#764ba2)}.cs-0 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-weight:800}.cs-0 .lc-actions{background:#4c3399}
 .cs-1 .lc-logo{background:linear-gradient(135deg,#f093fb,#f5576c)}.cs-1 .lc-name{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px}.cs-1 .lc-actions{background:#b01055}
 .cs-2 .lc-logo{background:linear-gradient(135deg,#0f172a,#1e3a5f)}.cs-2 .lc-name{color:#38bdf8;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px}.cs-2 .lc-actions{background:#0a1420}
@@ -485,54 +402,13 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
 .cs-12 .lc-logo{background:linear-gradient(135deg,#0d0d0d,#1a1a1a)}.cs-12 .lc-name{color:#c4ff61;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}.cs-12 .lc-actions{background:#060606}
 .cs-13 .lc-logo{background:linear-gradient(135deg,#00b4d8,#0077b6)}.cs-13 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:12px}.cs-13 .lc-actions{background:#005577}
 .cs-14 .lc-logo{background:linear-gradient(135deg,#f5af19,#f12711)}.cs-14 .lc-name{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:12px}.cs-14 .lc-actions{background:#b01a00}
-
 .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 @media(max-width:1100px){.logo-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:800px){.logo-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:520px){.logo-grid{grid-template-columns:repeat(2,1fr)}}
 
-/* ===== MULTI-STEP FLOW ===== */
-.step-modal{
-  position:fixed;inset:0;z-index:600;display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,.5);backdrop-filter:blur(6px);
-  display:none;
-}
-.step-modal.open{display:flex;animation:md-in .22s cubic-bezier(.34,1.4,.64,1)}
-@keyframes md-in{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
-.step-box{
-  background:var(--white);border-radius:24px;padding:32px 28px;
-  max-width:520px;width:calc(100% - 32px);
-  box-shadow:0 24px 64px rgba(0,0,0,.18);
-}
-.step-header{margin-bottom:24px}
-.step-num{font-size:10px;font-weight:800;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-.step-q{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--black);letter-spacing:-.5px;line-height:1.25}
-.step-sub{font-size:13px;color:var(--muted);margin-top:6px}
-
-.step-options{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.step-opt{
-  display:flex;align-items:center;gap:8px;
-  background:var(--chip);border:1.5px solid var(--border);
-  border-radius:12px;padding:10px 16px;cursor:pointer;
-  font-size:13px;font-weight:600;color:var(--ink);
-  font-family:'Plus Jakarta Sans',sans-serif;
-  transition:all .2s;
-}
-.step-opt:hover{border-color:var(--purple);color:var(--purple);background:#f0ebff}
-.step-opt.selected{background:var(--black);color:#fff;border-color:var(--black)}
-.step-opt-emoji{font-size:18px}
-
-.step-actions{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.step-back-btn{background:none;border:1.5px solid var(--border);border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s}
-.step-back-btn:hover{border-color:var(--ink);color:var(--ink)}
-.step-next-btn{background:var(--black);color:#fff;border:none;border-radius:10px;padding:10px 24px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;flex:1;max-width:200px}
-.step-next-btn:hover{background:var(--purple)}
-.step-next-btn:disabled{opacity:.35;cursor:not-allowed}
-
-.step-progress{display:flex;gap:6px;margin-bottom:20px}
-.step-dot{width:24px;height:3px;border-radius:3px;background:var(--border);transition:background .2s}
-.step-dot.active{background:var(--black)}
-.step-dot.done{background:var(--purple)}
+/* sec-label utility */
+.sec-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;text-align:center}
 </style>
 </head>
 <body>
@@ -551,131 +427,94 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
 
 <div class="hero">
   <div class="hero-tag"><span>✦</span> Orbit07 AI · India's Favourite</div>
-  <h1>Find your<br><em>perfect domain</em><br>instantly</h1>
+
+  <!-- Title row with 3D icons -->
+  <div class="hero-title-row">
+    <div class="hero-icon-3d left">🌐</div>
+    <h1>Find your<br><em>perfect domain</em><br>instantly</h1>
+    <div class="hero-icon-3d right">🚀</div>
+  </div>
+
   <p class="hero-sub">Describe your business in any language — Orbit07 AI generates unlimited creative domain names in seconds</p>
 
-  <!-- REDESIGNED SEARCH BOX -->
-  <div class="search-outer">
-    <div class="search-box">
-      <!-- Top: text input -->
-      <div class="search-top">
-        <span class="search-ai-icon">✦</span>
-        <input id="bi" type="text" placeholder="e.g. Mumbai restaurant, fashion boutique, yoga studio...">
+  <!-- UNIFIED SEARCH CARD -->
+  <div class="search-card">
+    <!-- Top: Input + Generate -->
+    <div class="search-top">
+      <span class="search-ai-icon">✦</span>
+      <input id="bi" type="text" placeholder="e.g. Mumbai restaurant, fashion boutique, yoga studio...">
+      <button class="gen-btn" onclick="go()">
+        <span class="gen-btn-icon">✦</span>
+        <span class="gen-btn-text">Generate</span>
+      </button>
+    </div>
+
+    <!-- Bottom: Industry chooser + TLD selector -->
+    <div class="search-bottom">
+      <!-- Industry -->
+      <div class="ind-select-wrap" id="indSelectWrap" onclick="toggleIndDD()">
+        <span class="ind-select-label">Industry</span>
+        <span class="ind-selected" id="indSelected">All Industries</span>
+        <span class="ind-arrow" id="indArrow">▾</span>
+        <div class="ind-dropdown" id="indDropdown">
+          <div class="ind-opt active" data-query="" data-label="All Industries" onclick="pickInd(this)"><span class="ind-opt-emoji">✦</span><span class="ind-opt-name">All Industries</span></div>
+          <div class="ind-opt" data-query="online grocery delivery" data-label="🛒 Grocery" onclick="pickInd(this)"><span class="ind-opt-emoji">🛒</span><span class="ind-opt-name">Grocery</span></div>
+          <div class="ind-opt" data-query="digital marketing agency" data-label="📣 Marketing" onclick="pickInd(this)"><span class="ind-opt-emoji">📣</span><span class="ind-opt-name">Marketing</span></div>
+          <div class="ind-opt" data-query="women fashion boutique" data-label="👗 Fashion" onclick="pickInd(this)"><span class="ind-opt-emoji">👗</span><span class="ind-opt-name">Fashion</span></div>
+          <div class="ind-opt" data-query="CA accounting firm" data-label="📊 CA / Finance" onclick="pickInd(this)"><span class="ind-opt-emoji">📊</span><span class="ind-opt-name">CA / Finance</span></div>
+          <div class="ind-opt" data-query="online coaching education platform" data-label="🎓 Education" onclick="pickInd(this)"><span class="ind-opt-emoji">🎓</span><span class="ind-opt-name">Education</span></div>
+          <div class="ind-opt" data-query="restaurant food delivery" data-label="🍽️ Restaurant" onclick="pickInd(this)"><span class="ind-opt-emoji">🍽️</span><span class="ind-opt-name">Restaurant</span></div>
+          <div class="ind-opt" data-query="real estate property India" data-label="🏠 Real Estate" onclick="pickInd(this)"><span class="ind-opt-emoji">🏠</span><span class="ind-opt-name">Real Estate</span></div>
+          <div class="ind-opt" data-query="healthcare clinic hospital" data-label="🏥 Healthcare" onclick="pickInd(this)"><span class="ind-opt-emoji">🏥</span><span class="ind-opt-name">Healthcare</span></div>
+          <div class="ind-opt" data-query="travel agency tours India" data-label="✈️ Travel" onclick="pickInd(this)"><span class="ind-opt-emoji">✈️</span><span class="ind-opt-name">Travel</span></div>
+          <div class="ind-opt" data-query="software IT company India" data-label="💻 IT / Software" onclick="pickInd(this)"><span class="ind-opt-emoji">💻</span><span class="ind-opt-name">IT / Software</span></div>
+          <div class="ind-opt" data-query="beauty salon spa" data-label="💆 Beauty & Spa" onclick="pickInd(this)"><span class="ind-opt-emoji">💆</span><span class="ind-opt-name">Beauty & Spa</span></div>
+          <div class="ind-opt" data-query="gym fitness center" data-label="💪 Fitness" onclick="pickInd(this)"><span class="ind-opt-emoji">💪</span><span class="ind-opt-name">Fitness</span></div>
+          <div class="ind-opt" data-query="law firm legal services India" data-label="⚖️ Legal" onclick="pickInd(this)"><span class="ind-opt-emoji">⚖️</span><span class="ind-opt-name">Legal</span></div>
+          <div class="ind-opt" data-query="ecommerce online store India" data-label="🛍️ E-Commerce" onclick="pickInd(this)"><span class="ind-opt-emoji">🛍️</span><span class="ind-opt-name">E-Commerce</span></div>
+          <div class="ind-opt" data-query="photography studio" data-label="📸 Photography" onclick="pickInd(this)"><span class="ind-opt-emoji">📸</span><span class="ind-opt-name">Photography</span></div>
+          <div class="ind-opt" data-query="wedding planning event management" data-label="💍 Events" onclick="pickInd(this)"><span class="ind-opt-emoji">💍</span><span class="ind-opt-name">Events</span></div>
+          <div class="ind-opt" data-query="interior design home decor" data-label="🛋️ Interior" onclick="pickInd(this)"><span class="ind-opt-emoji">🛋️</span><span class="ind-opt-name">Interior</span></div>
+          <div class="ind-opt" data-query="automotive car service" data-label="🚗 Automotive" onclick="pickInd(this)"><span class="ind-opt-emoji">🚗</span><span class="ind-opt-name">Automotive</span></div>
+          <div class="ind-opt" data-query="fintech payments startup India" data-label="💳 Fintech" onclick="pickInd(this)"><span class="ind-opt-emoji">💳</span><span class="ind-opt-name">Fintech</span></div>
+          <div class="ind-opt" data-query="online pharmacy medicine delivery" data-label="💊 Pharma" onclick="pickInd(this)"><span class="ind-opt-emoji">💊</span><span class="ind-opt-name">Pharma</span></div>
+          <div class="ind-opt" data-query="pet care grooming veterinary" data-label="🐾 Pet Care" onclick="pickInd(this)"><span class="ind-opt-emoji">🐾</span><span class="ind-opt-name">Pet Care</span></div>
+          <div class="ind-opt" data-query="cloud kitchen tiffin service" data-label="🍱 Cloud Kitchen" onclick="pickInd(this)"><span class="ind-opt-emoji">🍱</span><span class="ind-opt-name">Cloud Kitchen</span></div>
+          <div class="ind-opt" data-query="news media blog portal India" data-label="📰 News / Media" onclick="pickInd(this)"><span class="ind-opt-emoji">📰</span><span class="ind-opt-name">News / Media</span></div>
+          <div class="ind-opt" data-query="gaming esports platform India" data-label="🎮 Gaming" onclick="pickInd(this)"><span class="ind-opt-emoji">🎮</span><span class="ind-opt-name">Gaming</span></div>
+          <div class="ind-opt" data-query="startup SaaS B2B product" data-label="🚀 SaaS / Startup" onclick="pickInd(this)"><span class="ind-opt-emoji">🚀</span><span class="ind-opt-name">SaaS / Startup</span></div>
+          <div class="ind-opt" data-query="kids toys children products" data-label="🧸 Kids & Toys" onclick="pickInd(this)"><span class="ind-opt-emoji">🧸</span><span class="ind-opt-name">Kids & Toys</span></div>
+          <div class="ind-opt" data-query="agriculture farming rural India" data-label="🌾 Agriculture" onclick="pickInd(this)"><span class="ind-opt-emoji">🌾</span><span class="ind-opt-name">Agriculture</span></div>
+          <div class="ind-opt" data-query="logistics courier delivery service" data-label="📦 Logistics" onclick="pickInd(this)"><span class="ind-opt-emoji">📦</span><span class="ind-opt-name">Logistics</span></div>
+          <div class="ind-opt" data-query="music streaming artist platform" data-label="🎵 Music" onclick="pickInd(this)"><span class="ind-opt-emoji">🎵</span><span class="ind-opt-name">Music</span></div>
+          <div class="ind-opt" data-query="solar energy green environment startup" data-label="🌱 Green / Energy" onclick="pickInd(this)"><span class="ind-opt-emoji">🌱</span><span class="ind-opt-name">Green / Energy</span></div>
+        </div>
       </div>
-      <!-- Bottom: pills + button -->
-      <div class="search-bottom">
-        <!-- Industry dropdown -->
-        <div class="dropdown-wrap" id="indWrap">
-          <div class="search-pill" id="indPill" onclick="toggleDd('indMenu')">
-            <span class="pill-icon" id="indPillIcon">🏢</span>
-            <span id="indPillText">Industry</span>
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="dropdown-menu" id="indMenu">
-            <span class="dd-label">Select your industry</span>
-            <div class="dd-item" onclick="setInd('','🏢','All Industries')"><span class="dd-item-emoji">🏢</span>All Industries</div>
-            <div class="dd-divider"></div>
-            <div class="dd-item" onclick="setInd('online grocery delivery','🛒','Grocery')"><span class="dd-item-emoji">🛒</span>Grocery</div>
-            <div class="dd-item" onclick="setInd('digital marketing agency','📣','Marketing')"><span class="dd-item-emoji">📣</span>Marketing</div>
-            <div class="dd-item" onclick="setInd('women fashion boutique','👗','Fashion')"><span class="dd-item-emoji">👗</span>Fashion</div>
-            <div class="dd-item" onclick="setInd('CA accounting firm','📊','CA / Finance')"><span class="dd-item-emoji">📊</span>CA / Finance</div>
-            <div class="dd-item" onclick="setInd('online coaching education platform','🎓','Education')"><span class="dd-item-emoji">🎓</span>Education</div>
-            <div class="dd-item" onclick="setInd('restaurant food delivery','🍽️','Restaurant')"><span class="dd-item-emoji">🍽️</span>Restaurant</div>
-            <div class="dd-item" onclick="setInd('real estate property India','🏠','Real Estate')"><span class="dd-item-emoji">🏠</span>Real Estate</div>
-            <div class="dd-item" onclick="setInd('healthcare clinic hospital','🏥','Healthcare')"><span class="dd-item-emoji">🏥</span>Healthcare</div>
-            <div class="dd-item" onclick="setInd('travel agency tours India','✈️','Travel')"><span class="dd-item-emoji">✈️</span>Travel</div>
-            <div class="dd-item" onclick="setInd('software IT company India','💻','IT / Software')"><span class="dd-item-emoji">💻</span>IT / Software</div>
-            <div class="dd-item" onclick="setInd('beauty salon spa','💆','Beauty & Spa')"><span class="dd-item-emoji">💆</span>Beauty & Spa</div>
-            <div class="dd-item" onclick="setInd('gym fitness center','💪','Fitness')"><span class="dd-item-emoji">💪</span>Fitness</div>
-            <div class="dd-item" onclick="setInd('law firm legal services India','⚖️','Legal')"><span class="dd-item-emoji">⚖️</span>Legal</div>
-            <div class="dd-item" onclick="setInd('ecommerce online store India','🛍️','E-Commerce')"><span class="dd-item-emoji">🛍️</span>E-Commerce</div>
-            <div class="dd-item" onclick="setInd('photography studio','📸','Photography')"><span class="dd-item-emoji">📸</span>Photography</div>
-            <div class="dd-item" onclick="setInd('wedding planning event management','💍','Events')"><span class="dd-item-emoji">💍</span>Events</div>
-            <div class="dd-item" onclick="setInd('interior design home decor','🛋️','Interior')"><span class="dd-item-emoji">🛋️</span>Interior</div>
-            <div class="dd-item" onclick="setInd('automotive car service','🚗','Automotive')"><span class="dd-item-emoji">🚗</span>Automotive</div>
-            <div class="dd-item" onclick="setInd('fintech payments startup India','💳','Fintech')"><span class="dd-item-emoji">💳</span>Fintech</div>
-            <div class="dd-item" onclick="setInd('startup SaaS B2B product','🚀','SaaS / Startup')"><span class="dd-item-emoji">🚀</span>SaaS / Startup</div>
-            <div class="dd-item" onclick="setInd('agriculture farming rural India','🌾','Agriculture')"><span class="dd-item-emoji">🌾</span>Agriculture</div>
-            <div class="dd-item" onclick="setInd('logistics courier delivery service','📦','Logistics')"><span class="dd-item-emoji">📦</span>Logistics</div>
-            <div class="dd-item" onclick="setInd('gaming esports platform India','🎮','Gaming')"><span class="dd-item-emoji">🎮</span>Gaming</div>
-            <div class="dd-item" onclick="setInd('solar energy green environment startup','🌱','Green / Energy')"><span class="dd-item-emoji">🌱</span>Green / Energy</div>
-          </div>
+
+      <div class="search-bottom-divider"></div>
+
+      <!-- TLD -->
+      <div class="tld-select-wrap">
+        <span class="tld-label">TLD</span>
+        <div class="tld-pills">
+          <button class="tld-btn on" onclick="st(this,'.com')">.com</button>
+          <button class="tld-btn" onclick="st(this,'.in')">.in</button>
+          <button class="tld-btn" onclick="st(this,'.co.in')">.co.in</button>
+          <button class="tld-btn" onclick="st(this,'.ai')">.ai</button>
+          <button class="tld-btn" onclick="st(this,'.tv')">.tv</button>
+          <button class="tld-btn" onclick="st(this,'mix')">✦ Mix</button>
         </div>
-
-        <!-- Domain style dropdown -->
-        <div class="dropdown-wrap" id="domWrap">
-          <div class="search-pill domain-pill" id="domPill" onclick="toggleDd('domMenu')">
-            <span id="domPillText">.com</span>
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="dropdown-menu domain-menu" id="domMenu">
-            <span class="dd-label">Domain extension</span>
-            <div class="dom-opt selected" onclick="setDom('.com',this)">.com <span class="dom-badge">Most trusted</span></div>
-            <div class="dom-opt" onclick="setDom('.in',this)">.in <span class="dom-badge">India</span></div>
-            <div class="dom-opt" onclick="setDom('.co.in',this)">.co.in <span class="dom-badge">India biz</span></div>
-            <div class="dom-opt" onclick="setDom('.ai',this)">.ai <span class="dom-badge">Tech / AI</span></div>
-            <div class="dom-opt" onclick="setDom('.tv',this)">.tv <span class="dom-badge">Media</span></div>
-            <div class="dom-opt" onclick="setDom('mix',this)">✦ Mix All <span class="dom-badge">All types</span></div>
-          </div>
-        </div>
-
-        <div class="search-spacer"></div>
-
-        <!-- Search icon button -->
-        <button class="search-icon-btn" onclick="go()" title="Search">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
-
-        <!-- Generate button -->
-        <button class="gen-btn" onclick="go()">
-          <span class="gen-btn-icon">✦</span>
-          <span class="gen-btn-text">Generate</span>
-        </button>
       </div>
     </div>
   </div>
+  <!-- /SEARCH CARD -->
+
 </div>
 
-
-
-<!-- INDUSTRIES — pill style -->
-<div class="industry-wrap">
-  <div class="sec-label">Popular Industries — tap to search instantly</div>
-  <div class="ind-scroll">
-    <div class="ind-pill" onclick="sx('online grocery delivery','grocery')"><span class="ind-emoji">🛒</span>Grocery</div>
-    <div class="ind-pill" onclick="sx('digital marketing agency','marketing')"><span class="ind-emoji">📣</span>Marketing</div>
-    <div class="ind-pill" onclick="sx('women fashion boutique','fashion')"><span class="ind-emoji">👗</span>Fashion</div>
-    <div class="ind-pill" onclick="sx('CA accounting firm','finance')"><span class="ind-emoji">📊</span>CA / Finance</div>
-    <div class="ind-pill" onclick="sx('online coaching education platform','education')"><span class="ind-emoji">🎓</span>Education</div>
-    <div class="ind-pill" onclick="sx('restaurant food delivery','restaurant')"><span class="ind-emoji">🍽️</span>Restaurant</div>
-    <div class="ind-pill" onclick="sx('real estate property India','realestate')"><span class="ind-emoji">🏠</span>Real Estate</div>
-    <div class="ind-pill" onclick="sx('healthcare clinic hospital','healthcare')"><span class="ind-emoji">🏥</span>Healthcare</div>
-    <div class="ind-pill" onclick="sx('travel agency tours India','travel')"><span class="ind-emoji">✈️</span>Travel</div>
-    <div class="ind-pill" onclick="sx('software IT company India','tech')"><span class="ind-emoji">💻</span>IT / Software</div>
-    <div class="ind-pill" onclick="sx('beauty salon spa','beauty')"><span class="ind-emoji">💆</span>Beauty & Spa</div>
-    <div class="ind-pill" onclick="sx('gym fitness center','fitness')"><span class="ind-emoji">💪</span>Fitness</div>
-    <div class="ind-pill" onclick="sx('law firm legal services India','legal')"><span class="ind-emoji">⚖️</span>Legal</div>
-    <div class="ind-pill" onclick="sx('ecommerce online store India','ecommerce')"><span class="ind-emoji">🛍️</span>E-Commerce</div>
-    <div class="ind-pill" onclick="sx('photography studio','photography')"><span class="ind-emoji">📸</span>Photography</div>
-    <div class="ind-pill" onclick="sx('wedding planning event management','events')"><span class="ind-emoji">💍</span>Events</div>
-    <div class="ind-pill" onclick="sx('interior design home decor','interior')"><span class="ind-emoji">🛋️</span>Interior</div>
-    <div class="ind-pill" onclick="sx('automotive car service','auto')"><span class="ind-emoji">🚗</span>Automotive</div>
-    <div class="ind-pill" onclick="sx('fintech payments startup India','fintech')"><span class="ind-emoji">💳</span>Fintech</div>
-    <div class="ind-pill" onclick="sx('online pharmacy medicine delivery','pharma')"><span class="ind-emoji">💊</span>Pharma</div>
-    <div class="ind-pill" onclick="sx('pet care grooming veterinary','pets')"><span class="ind-emoji">🐾</span>Pet Care</div>
-    <div class="ind-pill" onclick="sx('cloud kitchen tiffin service','tiffin')"><span class="ind-emoji">🍱</span>Cloud Kitchen</div>
-    <div class="ind-pill" onclick="sx('news media blog portal India','media')"><span class="ind-emoji">📰</span>News / Media</div>
-    <div class="ind-pill" onclick="sx('gaming esports platform India','gaming')"><span class="ind-emoji">🎮</span>Gaming</div>
-    <div class="ind-pill" onclick="sx('startup SaaS B2B product','saas')"><span class="ind-emoji">🚀</span>SaaS / Startup</div>
-    <div class="ind-pill" onclick="sx('kids toys children products','kids')"><span class="ind-emoji">🧸</span>Kids & Toys</div>
-    <div class="ind-pill" onclick="sx('agriculture farming rural India','agri')"><span class="ind-emoji">🌾</span>Agriculture</div>
-    <div class="ind-pill" onclick="sx('logistics courier delivery service','logistics')"><span class="ind-emoji">📦</span>Logistics</div>
-    <div class="ind-pill" onclick="sx('music streaming artist platform','music')"><span class="ind-emoji">🎵</span>Music</div>
-    <div class="ind-pill" onclick="sx('solar energy green environment startup','green')"><span class="ind-emoji">🌱</span>Green / Energy</div>
-  </div>
+<div class="stats">
+  <div class="stat"><div class="stat-n">50K+</div><div class="stat-l">Domains Generated</div></div>
+  <div class="stat"><div class="stat-n">&lt;5s</div><div class="stat-l">Generation Time</div></div>
 </div>
-
-</div><!-- end homePage -->
 
 <div class="services">
   <div class="sec-label" style="margin-bottom:20px;">Our Services</div>
@@ -685,7 +524,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
       <div class="svc-content">
         <div class="svc-tag">Trademark</div>
         <div class="svc-title">Protect Your Brand</div>
-        <div class="svc-desc">Secure your brand name legally. Trademark search is free — registration from ₹1,499.</div>
+        <div class="svc-desc">Brand naam legally secure karo. Trademark search free — registration from ₹1,499.</div>
       </div>
       <div class="svc-footer">
         <div class="tm-card-btns">
@@ -699,7 +538,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
       <div class="svc-content">
         <div class="svc-tag">Domain Registration</div>
         <div class="svc-title">Buy Your Domain</div>
-        <div class="svc-desc">Register your domain at the best price. .in from ₹599/yr. .com from ₹899/yr.</div>
+        <div class="svc-desc">Best price pe domain register karo. .in domains from ₹599/yr. .com from ₹899/yr.</div>
       </div>
       <div class="svc-footer">
         <span class="svc-learn">Buy Domain <span class="svc-learn-arrow">→</span></span>
@@ -709,8 +548,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
       <div class="svc-emoji">🎨</div>
       <div class="svc-content">
         <div class="svc-tag">Business Logo</div>
-        <div class="svc-title">Create Free Logo</div>
-        <div class="svc-desc">AI-powered professional logo, instantly ready. No designer needed.</div>
+        <div class="svc-title">Free Logo Banao</div>
+        <div class="svc-desc">AI se professional logo instantly ready. Koi designer ki zaroorat nahi.</div>
       </div>
       <div class="svc-footer">
         <span class="svc-learn">Generate Free <span class="svc-learn-arrow">→</span></span>
@@ -720,8 +559,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
       <div class="svc-emoji">💻</div>
       <div class="svc-content">
         <div class="svc-tag">Website · ₹199/month</div>
-        <div class="svc-title">Get a Website</div>
-        <div class="svc-desc">Professional website for just ₹199/month. Perfect for Indian entrepreneurs.</div>
+        <div class="svc-title">Website Banwao</div>
+        <div class="svc-desc">Professional website sirf ₹199/month mein. Indian entrepreneurs ke liye perfect.</div>
       </div>
       <div class="svc-footer">
         <span class="svc-learn">Get Started <span class="svc-learn-arrow">→</span></span>
@@ -749,7 +588,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
       <div class="how-icon">🚀</div>
       <div class="how-num">03</div>
       <div class="how-h">Save, buy & launch</div>
-      <div class="how-p">Heart your favourites, check availability, buy instantly.</div>
+      <div class="how-p">Heart favourites, check availability, buy instantly.</div>
     </div>
   </div>
 </div>
@@ -785,96 +624,49 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20
   </div>
 </footer>
 
-<!-- RESULTS PAGE -->
-<div id="resultsPage">
-  <div class="rp-nav">
-    <button class="rp-back" onclick="goHome()">← Back</button>
-    <div class="rp-title" id="rpTitle">Results</div>
-    <div class="rp-count" id="rpCount">Loading...</div>
-  </div>
-  <div class="rp-saved-wrap">
-    <div class="rp-saved-box" id="rpSavedBox">
-      <div class="rp-saved-hd">
-        <div class="rp-saved-hd-left">❤️ Saved Domains <span class="saved-cnt" id="savedCnt">0</span></div>
-        <button class="rp-saved-clear" onclick="clearAllLiked()">Clear All</button>
-      </div>
-      <div class="rp-saved-list" id="rpSavedList"></div>
-    </div>
-  </div>
-  <div class="rp-grid-wrap">
-    <div class="rp-res-label" id="rpResLabel"></div>
-    <div class="logo-grid" id="rpGrid"></div>
-  </div>
-</div>
-
-<!-- MULTI-STEP MODAL -->
-<div class="step-modal" id="stepModal">
-  <div class="step-box">
-    <div class="step-progress">
-      <div class="step-dot active" id="sdot1"></div>
-      <div class="step-dot" id="sdot2"></div>
-      <div class="step-dot" id="sdot3"></div>
-    </div>
-    <div id="stepContent"></div>
-  </div>
-</div>
-
 <script>
 const GROQ_KEY='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';
 let tl='.com';
+let indQuery='';
 let liked=JSON.parse(localStorage.getItem('o7_liked')||'[]');
 const CS=15;
 
-// State for multi-step
-let stepState={industry:'',nameLength:'mix',tld:'.com'};
-let currentStep=1;
-
-/* ===== DROPDOWN LOGIC ===== */
-function toggleDd(id){
-  const menu=document.getElementById(id);
-  const isOpen=menu.classList.contains('open');
-  // close all
-  document.querySelectorAll('.dropdown-menu').forEach(m=>m.classList.remove('open'));
-  if(!isOpen)menu.classList.add('open');
+// ---- Industry dropdown ----
+function toggleIndDD(e){
+  if(e)e.stopPropagation();
+  const dd=document.getElementById('indDropdown');
+  const wrap=document.getElementById('indSelectWrap');
+  const arrow=document.getElementById('indArrow');
+  const isOpen=dd.classList.contains('open');
+  dd.classList.toggle('open',!isOpen);
+  wrap.classList.toggle('open',!isOpen);
 }
+function pickInd(el){
+  event.stopPropagation();
+  document.querySelectorAll('.ind-opt').forEach(o=>o.classList.remove('active'));
+  el.classList.add('active');
+  indQuery=el.dataset.query||'';
+  document.getElementById('indSelected').textContent=el.dataset.label||'All Industries';
+  document.getElementById('indDropdown').classList.remove('open');
+  document.getElementById('indSelectWrap').classList.remove('open');
+  // If industry picked and input empty, fill input
+  if(indQuery && !document.getElementById('bi').value.trim()){
+    document.getElementById('bi').value=indQuery;
+  }
+}
+// Close dropdown on outside click
 document.addEventListener('click',function(e){
-  if(!e.target.closest('.dropdown-wrap'))
-    document.querySelectorAll('.dropdown-menu').forEach(m=>m.classList.remove('open'));
+  if(!document.getElementById('indSelectWrap').contains(e.target)){
+    document.getElementById('indDropdown').classList.remove('open');
+    document.getElementById('indSelectWrap').classList.remove('open');
+  }
 });
 
-function setInd(query,emoji,label){
-  document.getElementById('indPillIcon').textContent=emoji;
-  document.getElementById('indPillText').textContent=label;
-  document.getElementById('indMenu').classList.remove('open');
-  // mark selected
-  document.querySelectorAll('#indMenu .dd-item').forEach(i=>i.classList.remove('selected'));
-  event.currentTarget.classList.add('selected');
-  // pre-fill input if field is empty
-  const bi=document.getElementById('bi');
-  if(query && !bi.value.trim()) bi.value=query;
+function st(el,v){
+  document.querySelectorAll('.tld-btn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');tl=v;
 }
 
-function setDom(val,el){
-  tl=val;
-  document.getElementById('domPillText').textContent=val==='mix'?'✦ Mix':val;
-  document.getElementById('domMenu').classList.remove('open');
-  document.querySelectorAll('.dom-opt').forEach(o=>o.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-/* ===== INDUSTRY QUICK PILL CLICK ===== */
-function sx(query,indKey){
-  const bi=document.getElementById('bi');
-  const existing=bi.value.trim();
-  if(existing && existing.length>2){
-    bi.value=existing+', '+query;
-  } else {
-    bi.value=query;
-  }
-  go();
-}
-
-/* ===== RESULTS PAGE ===== */
 function openResults(){
   document.getElementById('homePage').style.display='none';
   const rp=document.getElementById('resultsPage');
@@ -885,7 +677,6 @@ function goHome(){
   document.getElementById('resultsPage').classList.remove('open');
 }
 
-/* ===== LIKED ===== */
 function saveLiked(){localStorage.setItem('o7_liked',JSON.stringify(liked));renderSaved()}
 function renderSaved(){
   const box=document.getElementById('rpSavedBox');
@@ -910,12 +701,12 @@ function toggleLike(domain,btn){
   saveLiked();
 }
 
-/* ===== LOADER ===== */
 const loadingWords=[
   ['✦ Analyzing','🔍 Industry','💡 Brainstorming','🌐 Domains'],
   ['🚀 Generating','✨ Creative','🎯 Brandable','💎 Names'],
   ['⚡ AI Working','🧠 Processing','🌟 Crafting','🎨 Ideas'],
 ];
+
 function showLoader(){
   const wordSet=loadingWords[Math.floor(Math.random()*loadingWords.length)];
   const wordsHTML=wordSet.map((w,i)=>`<div class="ai-word" style="animation-delay:${i*0.15}s">${w}</div>`).join('');
@@ -926,17 +717,18 @@ function showLoader(){
       <div class="ai-orb-core">✦</div>
     </div>
     <div class="ai-loader-text">
-      <div class="ai-loader-title">Orbit07 AI is working...</div>
-      <div class="ai-loader-sub">Generating unlimited brand names for you</div>
+      <div class="ai-loader-title">Orbit07 AI kaam par hai...</div>
+      <div class="ai-loader-sub">Unlimited brand names generate ho rahe hain</div>
       <div class="ai-words">${wordsHTML}</div>
     </div>
     <div class="ai-progress"><div class="ai-progress-bar"></div></div>
   </div>`;
 }
 
-/* ===== GENERATE ===== */
 async function go(){
-  const biz=document.getElementById('bi').value.trim();
+  let biz=document.getElementById('bi').value.trim();
+  // If input empty but industry selected, use industry query
+  if(!biz && indQuery)biz=indQuery;
   if(!biz)return;
 
   document.getElementById('rpTitle').textContent='"'+biz+'"';
@@ -946,7 +738,9 @@ async function go(){
   openResults();
   renderSaved();
 
+  const industryHint=indQuery?`Industry context: ${indQuery}. `:'';
   const prompt=`You are Orbit07, world-class domain branding AI. Generate exactly 100 unique creative brandable domain names for: "${biz}".
+${industryHint}IMPORTANT: Include names that contain the main keyword/s from the business description (keyword matching). Mix keyword-based names with creative portmanteau/brandable names.
 TLD: ${tl==='mix'?'mix of .com .in .co.in .ai .tv':tl}.
 Rules: short memorable professional, mix compound/portmanteau/suffix(-ify-ly-hub-go-now-hq)/prefix(get-my-try-), no duplicates, include keyword-match names.
 First 8: top:true, rest top:false. likely_available:true if made-up word, false if common phrase.
@@ -985,11 +779,34 @@ All 100 required.`;
     }).join('');
     renderSaved();
   }catch(e){
-    document.getElementById('rpGrid').innerHTML='<div style="text-align:center;padding:60px 20px"><div style="font-size:40px;margin-bottom:12px">😕</div><div style="font-size:14px;color:#ef4444;font-weight:600">Something went wrong. Please try again.</div></div>';
+    document.getElementById('rpGrid').innerHTML='<div style="text-align:center;padding:60px 20px"><div style="font-size:40px;margin-bottom:12px">😕</div><div style="font-size:14px;color:#ef4444;font-weight:600">Kuch gadbad ho gayi. Dobara try karo.</div></div>';
     console.error(e);
   }
 }
 document.getElementById('bi').addEventListener('keydown',e=>{if(e.key==='Enter')go()});
 </script>
+</div>
+
+<!-- RESULTS PAGE -->
+<div id="resultsPage">
+  <div class="rp-nav">
+    <button class="rp-back" onclick="goHome()">← Back</button>
+    <div class="rp-title" id="rpTitle">Results</div>
+    <div class="rp-count" id="rpCount">Loading...</div>
+  </div>
+  <div class="rp-saved-wrap">
+    <div class="rp-saved-box" id="rpSavedBox">
+      <div class="rp-saved-hd">
+        <div class="rp-saved-hd-left">❤️ Saved Domains <span class="saved-cnt" id="savedCnt">0</span></div>
+        <button class="rp-saved-clear" onclick="clearAllLiked()">Sab hatao</button>
+      </div>
+      <div class="rp-saved-list" id="rpSavedList"></div>
+    </div>
+  </div>
+  <div class="rp-grid-wrap">
+    <div class="rp-res-label" id="rpResLabel"></div>
+    <div class="logo-grid" id="rpGrid"></div>
+  </div>
+</div>
 </body>
 </html>
