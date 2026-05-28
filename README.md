@@ -2,564 +2,245 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Luxury Frame Store</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Best Collection for Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#fff;color:#111;overflow-x:hidden}
+.wrap{max-width:960px;margin:0 auto;padding:40px 16px 60px}
+.eyebrow{text-align:center;font-size:11px;letter-spacing:0.12em;color:#888;text-transform:uppercase;margin-bottom:10px}
+.main-title{text-align:center;font-size:clamp(28px,5vw,52px);font-weight:800;line-height:1.05;margin-bottom:12px}
+.subtitle{text-align:center;font-size:15px;color:#666;line-height:1.6;margin-bottom:36px}
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+/* FILTER PILLS */
+.filters{display:flex;gap:8px;padding-bottom:6px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.pill{border:1.5px solid #ddd;border-radius:999px;padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;background:#fff;color:#444;transition:all .2s}
+.pill.active{background:#111;color:#fff;border-color:#111}
+.pill:hover:not(.active){border-color:#999}
+.view-more-btn{border:1.5px solid #111;border-radius:999px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#111;white-space:nowrap;transition:all .2s}
+.view-more-btn:hover{background:#111;color:#fff}
 
-body{
-  font-family:'Inter',sans-serif;
-  background:#04101d;
-  color:white;
-  overflow-x:hidden;
-}
+/* CAROUSEL */
+.carousel-wrap{position:relative;overflow:hidden;padding:20px 0 30px}
+.track{display:flex;gap:20px;align-items:center;justify-content:center}
+.card{flex-shrink:0;border-radius:20px;overflow:hidden;position:relative;cursor:pointer;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.card.center{width:clamp(200px,36vw,300px);height:clamp(260px,42vw,380px);z-index:2;transform:scale(1.08);box-shadow:0 20px 60px rgba(0,0,0,0.22)}
+.card.side{width:clamp(140px,24vw,200px);height:clamp(190px,30vw,290px);z-index:1;opacity:0.7}
+.card.far{width:clamp(90px,16vw,150px);height:clamp(130px,20vw,210px);z-index:0;opacity:0.4}
+.card img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.card .hero-label{position:absolute;bottom:0;left:0;right:0;padding:20px 14px 14px;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);color:#fff;font-weight:700;font-size:15px}
+.card.side .hero-label,.card.far .hero-label{display:none}
 
-/* NAVBAR */
+/* NAV BUTTONS */
+.nav-row{display:flex;justify-content:center;gap:12px;margin-top:10px}
+.nav-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid #ccc;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.nav-btn:hover{border-color:#111;background:#111;color:#fff}
+.nav-btn svg{width:16px;height:16px}
 
-.navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:22px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-  backdrop-filter:blur(14px);
-  background:rgba(0,0,0,0.25);
-}
+/* DIVIDER */
+.section-divider{border:none;border-top:1.5px solid #eee;margin:60px 0}
 
-.logo{
-  font-size:28px;
-  font-weight:800;
-}
-
-.nav-links{
-  display:flex;
-  gap:28px;
-}
-
-.nav-links a{
-  color:white;
-  text-decoration:none;
-  opacity:0.8;
-  transition:0.3s;
-}
-
-.nav-links a:hover{
-  opacity:1;
-}
-
-/* HERO */
-
-.hero-slider{
-  width:100%;
-  height:100vh;
-  overflow:hidden;
-  position:relative;
-}
-
-.slides{
-  display:flex;
-  width:300%;
-  height:100%;
-  animation:slide 14s infinite;
-}
-
-.slide{
-  width:100%;
-  height:100%;
-  flex-shrink:0;
-  position:relative;
-}
-
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.7)
-  );
-}
-
-.hero-content{
-  position:absolute;
-  top:50%;
-  left:8%;
-  transform:translateY(-50%);
-  z-index:2;
-}
-
-.hero-content h1{
-  font-size:90px;
-  line-height:0.95;
-  margin-bottom:24px;
-}
-
-.hero-content p{
-  max-width:650px;
-  opacity:0.8;
-  line-height:1.8;
-  font-size:18px;
-}
-
-.hero-btn{
-  margin-top:35px;
-  display:inline-block;
-  padding:16px 34px;
-  border-radius:999px;
-  background:white;
-  color:black;
-  text-decoration:none;
-  font-weight:700;
-}
-
-/* COLLECTIONS */
-
-.collections{
-  padding:100px 8%;
-}
-
-.section-title{
-  font-size:54px;
-  margin-bottom:50px;
-  font-weight:800;
-}
-
-.collection-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-}
-
-.collection-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:30px;
-  min-height:430px;
-  transition:0.4s ease;
-}
-
-.collection-card:hover{
-  transform:translateY(-10px) scale(1.02);
-}
-
-.collection-card img{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.collection-content{
-  position:relative;
-  z-index:2;
-  padding:34px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  height:100%;
-}
-
-.collection-title{
-  font-size:42px;
-  line-height:1.05;
-  max-width:220px;
-}
-
-.collection-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  width:max-content;
-  padding:12px 24px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(10px);
-  color:white;
-  text-decoration:none;
-}
-
-/* PRODUCTS */
-
-.products{
-  padding:40px 8% 100px;
-}
-
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-}
-
-.product-card{
-  background:#0d1a29;
-  border-radius:24px;
-  overflow:hidden;
-  transition:0.4s;
-}
-
-.product-card:hover{
-  transform:translateY(-8px);
-}
-
-.product-card img{
-  width:100%;
-  height:280px;
-  object-fit:cover;
-}
-
-.product-info{
-  padding:22px;
-}
-
-.product-info h3{
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-.price{
-  font-size:20px;
-  font-weight:700;
-  margin-bottom:18px;
-}
-
-.buy-btn{
-  display:inline-block;
-  padding:12px 22px;
-  border-radius:999px;
-  background:white;
-  color:black;
-  text-decoration:none;
-  font-weight:700;
-}
-
-/* FOOTER */
-
-.footer{
-  text-align:center;
-  padding:40px;
-  opacity:0.6;
-}
-
-/* ANIMATION */
-
-@keyframes slide{
-
-  0%{
-    transform:translateX(0);
-  }
-
-  30%{
-    transform:translateX(0);
-  }
-
-  35%{
-    transform:translateX(-100%);
-  }
-
-  65%{
-    transform:translateX(-100%);
-  }
-
-  70%{
-    transform:translateX(-200%);
-  }
-
-  100%{
-    transform:translateX(-200%);
-  }
-
-}
+/* BEST SELLING */
+.section-title{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:8px}
+.section-sub{font-size:14px;color:#888;margin-bottom:32px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.product-card{border:1.5px solid #eee;border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;background:#fff}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.10);border-color:#ddd}
+.product-img{width:100%;height:200px;object-fit:cover;display:block;background:#f5f5f5}
+.product-info{padding:16px}
+.product-hero-tag{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.product-name{font-size:15px;font-weight:700;margin-bottom:8px;color:#111}
+.product-bottom{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-size:16px;font-weight:800;color:#111}
+.buy-btn{background:#111;color:#fff;border:none;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s}
+.buy-btn:hover{background:#333}
 
 /* MOBILE */
-
-@media(max-width:768px){
-
-  .hero-content h1{
-    font-size:52px;
-  }
-
-  .section-title{
-    font-size:36px;
-  }
-
-  .collection-title{
-    font-size:30px;
-  }
-
-  .nav-links{
-    display:none;
-  }
-
+@media(max-width:600px){
+  .card.far{display:none}
+  .card.side{width:clamp(120px,28vw,170px);height:clamp(160px,36vw,230px)}
+  .card.center{width:clamp(180px,48vw,240px);height:clamp(230px,60vw,310px)}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .product-img{height:150px}
 }
-
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<!-- NAVBAR -->
+  <!-- HEADER -->
+  <p class="eyebrow">Gallery</p>
+  <h1 class="main-title">Best Collection for Hero</h1>
+  <p class="subtitle">Explore the mightiest heroes of the Marvel universe —<br>legends captured through every frame.</p>
 
-<nav class="navbar">
-
-  <div class="logo">
-    FRAMEVAULT
+  <!-- FILTER PILLS -->
+  <div class="filters">
+    <button class="pill active" onclick="setFilter(this,'all')">All Heroes</button>
+    <button class="pill" onclick="setFilter(this,'iron-man')">Iron Man</button>
+    <button class="pill" onclick="setFilter(this,'spider-man')">Spider-Man</button>
+    <button class="pill" onclick="setFilter(this,'thor')">Thor</button>
+    <button class="pill" onclick="setFilter(this,'captain-america')">Captain America</button>
+    <button class="pill" onclick="setFilter(this,'doctor-strange')">Doctor Strange</button>
+    <button class="pill" onclick="setFilter(this,'hulk')">Hulk</button>
+    <button class="view-more-btn">View More →</button>
   </div>
 
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Collections</a>
-    <a href="#">Products</a>
-    <a href="#">Contact</a>
+  <!-- CAROUSEL -->
+  <div class="carousel-wrap">
+    <div class="track" id="track"></div>
+  </div>
+  <div class="nav-row">
+    <button class="nav-btn" onclick="move(-1)" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="nav-btn" onclick="move(1)" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
   </div>
 
-</nav>
-
-<!-- HERO SLIDER -->
-
-<section class="hero-slider">
-
-  <div class="slides">
-
-    <!-- SLIDE 1 -->
-
-    <div class="slide">
-
-      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="hero-content">
-
-        <h1>
-          Luxury<br>
-          Wall Frames
-        </h1>
-
-        <p>
-          Premium interior wall frames designed for modern homes and luxury spaces.
-        </p>
-
-        <a href="#" class="hero-btn">
-          Explore Now
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- SLIDE 2 -->
-
-    <div class="slide">
-
-      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1400&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-    </div>
-
-    <!-- SLIDE 3 -->
-
-    <div class="slide">
-
-      <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1400&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- COLLECTION SECTION -->
-
-<section class="collections">
-
-  <h2 class="section-title">
-    Collections
-  </h2>
-
-  <div class="collection-grid">
-
-    <!-- CARD 1 -->
-
-    <div class="collection-card">
-
-      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="collection-content">
-
-        <h3 class="collection-title">
-          Modern Black Frames
-        </h3>
-
-        <a href="#" class="collection-btn">
-          Explore →
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- CARD 2 -->
-
-    <div class="collection-card">
-
-      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="collection-content">
-
-        <h3 class="collection-title">
-          Wooden Luxury Art
-        </h3>
-
-        <a href="#" class="collection-btn">
-          Explore →
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- CARD 3 -->
-
-    <div class="collection-card">
-
-      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="overlay"></div>
-
-      <div class="collection-content">
-
-        <h3 class="collection-title">
-          Premium Interior Frames
-        </h3>
-
-        <a href="#" class="collection-btn">
-          Explore →
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- TOP SELLING -->
-
-<section class="products">
-
-  <h2 class="section-title">
-    Top Selling Products
-  </h2>
-
-  <div class="product-grid">
-
-    <!-- PRODUCT 1 -->
-
+  <hr class="section-divider" />
+
+  <!-- BEST SELLING -->
+  <h2 class="section-title">Best Selling Products</h2>
+  <p class="section-sub">Top picks from our Marvel hero merchandise collection</p>
+  <div class="product-grid" id="product-grid"></div>
+
+</div>
+
+<script>
+const heroes = [
+  {
+    id:'iron-man',
+    name:'Iron Man',
+    img:'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=600&auto=format&fit=crop',
+    color:'#b71c1c'
+  },
+  {
+    id:'spider-man',
+    name:'Spider-Man',
+    img:'https://images.unsplash.com/photo-1608889175123-8ee362201f81?w=600&auto=format&fit=crop',
+    color:'#c62828'
+  },
+  {
+    id:'thor',
+    name:'Thor',
+    img:'https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?w=600&auto=format&fit=crop',
+    color:'#1565c0'
+  },
+  {
+    id:'captain-america',
+    name:'Captain America',
+    img:'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=600&auto=format&fit=crop',
+    color:'#0d47a1'
+  },
+  {
+    id:'doctor-strange',
+    name:'Doctor Strange',
+    img:'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&auto=format&fit=crop',
+    color:'#4a148c'
+  },
+  {
+    id:'hulk',
+    name:'Hulk',
+    img:'https://images.unsplash.com/photo-1559583985-c80d8ad9b29f?w=600&auto=format&fit=crop',
+    color:'#1b5e20'
+  },
+];
+
+const products = [
+  {hero:'Iron Man',tag:'iron-man',name:'Iron Man Arc Reactor Tee',price:'₹999',img:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&auto=format&fit=crop'},
+  {hero:'Spider-Man',tag:'spider-man',name:'Spider-Man Web Hoodie',price:'₹1,499',img:'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&auto=format&fit=crop'},
+  {hero:'Thor',tag:'thor',name:'Thor Mjolnir Keychain',price:'₹399',img:'https://images.unsplash.com/photo-1601445638532-1e6a7b0d5a2d?w=400&auto=format&fit=crop'},
+  {hero:'Captain America',tag:'captain-america',name:'Cap Shield Backpack',price:'₹1,299',img:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&auto=format&fit=crop'},
+  {hero:'Doctor Strange',tag:'doctor-strange',name:'Sorcerer Cloak Jacket',price:'₹2,199',img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&auto=format&fit=crop'},
+  {hero:'Hulk',tag:'hulk',name:'Hulk Smash Figurine',price:'₹799',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fit=crop'},
+];
+
+let cur = 0;
+let activeFilter = 'all';
+let filteredHeroes = [...heroes];
+
+function render() {
+  const track = document.getElementById('track');
+  track.innerHTML = '';
+  if(filteredHeroes.length === 0) {
+    track.innerHTML = '<p style="color:#888;text-align:center;padding:40px">No heroes found.</p>';
+    return;
+  }
+  const positions = ['far','side','center','side','far'];
+  const total = filteredHeroes.length;
+  for(let i = 0; i < 5; i++) {
+    let idx = ((cur - 2 + i) % total + total) % total;
+    let hero = filteredHeroes[idx];
+    let card = document.createElement('div');
+    card.className = 'card ' + positions[i];
+
+    let img = document.createElement('img');
+    img.src = hero.img;
+    img.alt = hero.name;
+    card.appendChild(img);
+
+    if(positions[i] === 'center') {
+      let label = document.createElement('div');
+      label.className = 'hero-label';
+      label.textContent = hero.name;
+      card.appendChild(label);
+    }
+
+    const clickIdx = idx;
+    card.addEventListener('click', () => { cur = clickIdx; render(); });
+    track.appendChild(card);
+  }
+}
+
+function renderProducts(filter) {
+  const grid = document.getElementById('product-grid');
+  const list = filter === 'all' ? products : products.filter(p => p.tag === filter);
+  if(list.length === 0){
+    grid.innerHTML = '<p style="color:#888;grid-column:1/-1;text-align:center;padding:30px">No products for this hero yet.</p>';
+    return;
+  }
+  grid.innerHTML = list.map(p => `
     <div class="product-card">
-
-      <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1200&auto=format&fit=crop">
-
+      <img class="product-img" src="${p.img}" alt="${p.name}" />
       <div class="product-info">
-
-        <h3>
-          Black Minimal Frame
-        </h3>
-
-        <div class="price">
-          ₹1,299
+        <div class="product-hero-tag">${p.hero}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-bottom">
+          <span class="product-price">${p.price}</span>
+          <button class="buy-btn">Buy Now</button>
         </div>
-
-        <a href="#" class="buy-btn">
-          Buy Now
-        </a>
-
       </div>
-
     </div>
+  `).join('');
+}
 
-    <!-- PRODUCT 2 -->
+function setFilter(btn, filter) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = filter;
+  filteredHeroes = filter === 'all' ? [...heroes] : heroes.filter(h => h.id === filter);
+  cur = 0;
+  render();
+  renderProducts(filter);
+}
 
-    <div class="product-card">
+function move(dir) {
+  const total = filteredHeroes.length;
+  if(total === 0) return;
+  cur = ((cur + dir) % total + total) % total;
+  render();
+}
 
-      <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop">
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowLeft') move(-1);
+  if(e.key === 'ArrowRight') move(1);
+});
 
-      <div class="product-info">
-
-        <h3>
-          Wooden Art Frame
-        </h3>
-
-        <div class="price">
-          ₹1,899
-        </div>
-
-        <a href="#" class="buy-btn">
-          Buy Now
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- PRODUCT 3 -->
-
-    <div class="product-card">
-
-      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
-
-      <div class="product-info">
-
-        <h3>
-          Premium Gold Frame
-        </h3>
-
-        <div class="price">
-          ₹2,499
-        </div>
-
-        <a href="#" class="buy-btn">
-          Buy Now
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
-  © 2026 FRAMEVAULT. All rights reserved.
-</footer>
-
+render();
+renderProducts('all');
+</script>
 </body>
 </html>
