@@ -1,812 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name='impact-site-verification' value='823171f2-d471-4c99-95d5-e3e27491c79c'>
-<title>Orbit07 — AI Domain Name Generator</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Luxury Frame Store</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&family=Bebas+Neue&family=Montserrat:wght@700;800&family=Poppins:wght@600;700;800&family=Raleway:wght@700;800&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#f7f6f3;--white:#fff;--black:#0c0c0c;--ink:#1c1c1e;
-  --muted:#737373;--border:#e2dfd9;--chip:#eeecea;
-  --accent:#ff4500;--purple:#6d28d9;--green:#059669;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 55% 45% at 10% 15%,rgba(109,40,217,.11) 0%,transparent 65%),
-    radial-gradient(ellipse 50% 55% at 90% 10%,rgba(255,69,0,.09) 0%,transparent 65%),
-    radial-gradient(ellipse 60% 35% at 50% 95%,rgba(5,150,105,.07) 0%,transparent 65%),#f7f6f3}
-
-.fe{position:fixed;pointer-events:none;z-index:1;user-select:none;opacity:.4;animation:flt 7s ease-in-out infinite}
-@keyframes flt{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(5deg)}}
-.fe1{font-size:24px;top:12%;left:4%;animation-delay:0s}
-.fe2{font-size:20px;top:28%;right:6%;animation-delay:1.8s}
-.fe3{font-size:18px;top:58%;left:2%;animation-delay:3.2s}
-.fe4{font-size:24px;bottom:28%;right:3%;animation-delay:1s}
-.fe5{font-size:20px;bottom:14%;left:7%;animation-delay:2.5s}
-@media(max-width:640px){.fe{display:none}}
-
-nav{display:flex;justify-content:space-between;align-items:center;padding:0 32px;height:56px;
-  background:rgba(247,246,243,.9);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--black);
-  display:flex;align-items:center;gap:7px;letter-spacing:-.3px}
-.logo-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
-  animation:pulse 2.2s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
-.nav-pill{font-size:11px;font-weight:600;color:#fff;letter-spacing:.05em;
-  background:linear-gradient(135deg,var(--accent),var(--purple));padding:4px 12px;border-radius:20px}
-@media(max-width:480px){nav{padding:0 16px}}
-
-/* ===== HERO ===== */
-.hero{position:relative;z-index:2;text-align:center;padding:72px 20px 36px;max-width:780px;margin:0 auto}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;
-  color:var(--muted);letter-spacing:.08em;text-transform:uppercase;
-  background:rgba(255,255,255,.8);border:1px solid var(--border);border-radius:20px;
-  padding:5px 14px;margin-bottom:20px;backdrop-filter:blur(8px)}
-.hero-tag span{color:var(--accent)}
-
-/* Hero title row with 3D icons */
-.hero-title-row{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:14px}
-.hero-icon-3d{
-  font-size:52px;line-height:1;
-  filter:drop-shadow(0 8px 18px rgba(109,40,217,.3)) drop-shadow(0 3px 6px rgba(0,0,0,.15));
-  animation:icon3d 4s ease-in-out infinite;
-  flex-shrink:0;
-}
-.hero-icon-3d.left{animation-delay:0s}
-.hero-icon-3d.right{animation-delay:1.5s;font-size:46px}
-@keyframes icon3d{
-  0%,100%{transform:translateY(0) rotate(-3deg) scale(1)}
-  50%{transform:translateY(-10px) rotate(4deg) scale(1.06)}
-}
-h1{font-family:'Syne',sans-serif;font-size:54px;font-weight:800;letter-spacing:-2.5px;
-  line-height:1.0;color:var(--black)}
-h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:15px;color:var(--muted);font-weight:400;line-height:1.65;
-  margin-bottom:30px;max-width:460px;margin-left:auto;margin-right:auto}
-@media(max-width:640px){
-  h1{font-size:30px;letter-spacing:-1.5px}
-  .hero{padding:48px 16px 24px}
-  .hero-sub{font-size:13px}
-  .hero-icon-3d{font-size:34px}
-  .hero-icon-3d.right{font-size:30px}
-  .hero-title-row{gap:10px}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* ===== SEARCH CARD ===== */
-.search-card{
-  max-width:660px;margin:0 auto 10px;
-  background:var(--white);
-  border-radius:22px;
-  border:1.5px solid var(--border);
-  box-shadow:0 8px 40px rgba(0,0,0,.09),0 2px 8px rgba(0,0,0,.04);
+body{
+  font-family:'Inter',sans-serif;
+  background:#04101d;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:22px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  backdrop-filter:blur(14px);
+  background:rgba(0,0,0,0.25);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:800;
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  opacity:0.8;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+/* HERO */
+
+.hero-slider{
+  width:100%;
+  height:100vh;
   overflow:hidden;
-  transition:box-shadow .3s;
-}
-.search-card:focus-within{
-  border-color:transparent;
-  box-shadow:0 0 0 2px var(--purple),0 12px 50px rgba(109,40,217,.18);
-}
-
-/* Top row: input + button */
-.search-top{
-  display:flex;align-items:center;gap:0;padding:6px 6px 6px 18px;
-  border-bottom:1.5px solid var(--border);
-}
-.search-ai-icon{
-  font-size:18px;flex-shrink:0;margin-right:10px;
-  background:linear-gradient(135deg,var(--purple),var(--accent));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:ai-pulse 3s ease-in-out infinite;
-}
-@keyframes ai-pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
-.search-card input{
-  flex:1;border:none;outline:none;font-size:15px;
-  font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:transparent;
-  padding:10px 0;min-width:0;
-}
-.search-card input::placeholder{color:#c0bdb8}
-
-.gen-btn{
-  background:linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 50%,#0c0c0c 100%);
-  color:#fff;border:none;padding:12px 22px;border-radius:14px;
-  font-size:13px;font-weight:700;cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;
-  white-space:nowrap;display:flex;align-items:center;gap:8px;
-  transition:all .25s cubic-bezier(.4,0,.2,1);flex-shrink:0;
-  position:relative;overflow:hidden;
-  box-shadow:0 2px 12px rgba(0,0,0,.25);
-}
-.gen-btn::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,var(--accent),var(--purple));
-  opacity:0;transition:opacity .25s;
-}
-.gen-btn:hover::before{opacity:1}
-.gen-btn:hover{transform:scale(.98);box-shadow:0 4px 20px rgba(109,40,217,.35)}
-.gen-btn:active{transform:scale(.95)}
-.gen-btn-text,.gen-btn-icon{position:relative;z-index:1}
-.gen-btn-icon{
-  width:20px;height:20px;border-radius:6px;
-  background:rgba(255,255,255,.15);
-  display:flex;align-items:center;justify-content:center;
-  font-size:11px;transition:transform .25s;
-}
-.gen-btn:hover .gen-btn-icon{transform:rotate(20deg) scale(1.1)}
-@media(max-width:480px){.gen-btn{padding:10px 13px;font-size:12px}}
-
-/* Bottom row: industries + TLD */
-.search-bottom{
-  display:flex;align-items:stretch;min-height:48px;
-}
-.search-bottom-divider{width:1.5px;background:var(--border);flex-shrink:0}
-
-/* Industry selector */
-.ind-select-wrap{
-  flex:1;display:flex;align-items:center;padding:0 14px;gap:8px;cursor:pointer;
   position:relative;
 }
-.ind-select-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
-.ind-selected{font-size:13px;font-weight:600;color:var(--ink);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ind-arrow{font-size:10px;color:var(--muted);flex-shrink:0;transition:transform .2s}
-.ind-select-wrap.open .ind-arrow{transform:rotate(180deg)}
 
-/* Industry dropdown */
-.ind-dropdown{
-  position:absolute;top:calc(100% + 6px);left:0;right:0;
-  background:var(--white);border:1.5px solid var(--border);border-radius:16px;
-  box-shadow:0 16px 48px rgba(0,0,0,.14);z-index:200;
-  max-height:280px;overflow-y:auto;padding:8px;
-  display:none;
-  animation:ddIn .18s cubic-bezier(.34,1.4,.64,1);
+.slides{
+  display:flex;
+  width:300%;
+  height:100%;
+  animation:slide 14s infinite;
 }
-@keyframes ddIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.ind-dropdown.open{display:block}
-.ind-opt{
-  display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:10px;
-  cursor:pointer;font-size:13px;font-weight:600;color:var(--ink);transition:background .12s;
-}
-.ind-opt:hover,.ind-opt.active{background:var(--chip)}
-.ind-opt-emoji{font-size:16px;flex-shrink:0}
-.ind-opt-name{flex:1}
 
-/* TLD selector */
-.tld-select-wrap{
-  display:flex;align-items:center;gap:6px;padding:0 14px;flex-shrink:0;
-  border-left:1.5px solid var(--border);
+.slide{
+  width:100%;
+  height:100%;
+  flex-shrink:0;
   position:relative;
 }
-.tld-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
-.tld-pills{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto}
-.tld-pills::-webkit-scrollbar{display:none}
-.tld-btn{font-size:11px;font-weight:700;padding:5px 11px;border-radius:20px;
-  border:1.5px solid var(--border);color:var(--muted);cursor:pointer;
-  background:var(--white);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s;white-space:nowrap}
-.tld-btn:hover{border-color:var(--purple);color:var(--purple)}
-.tld-btn.on{background:var(--black);color:#fff;border-color:var(--black)}
 
-@media(max-width:560px){
-  .search-bottom{flex-direction:column}
-  .search-bottom-divider{width:100%;height:1.5px}
-  .tld-select-wrap{border-left:none;border-top:1.5px solid var(--border);padding:10px 14px}
-  .ind-dropdown{right:0;left:0}
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.stats{position:relative;z-index:2;display:flex;justify-content:center;
-  gap:28px;flex-wrap:wrap;max-width:560px;margin:0 auto 36px;padding:0 16px}
-.stat{text-align:center}
-.stat-n{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;
-  color:var(--black);letter-spacing:-1px;line-height:1}
-.stat-l{font-size:11px;color:var(--muted);margin-top:2px}
-
-.liked-bar{position:relative;z-index:2;max-width:900px;margin:20px auto 0;padding:0 20px;display:none}
-.liked-inner{background:var(--white);border-radius:12px;padding:12px 16px;border:1px solid var(--border)}
-.liked-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
-.liked-list{display:flex;flex-wrap:wrap;gap:7px}
-.liked-pill{display:flex;align-items:center;gap:5px;background:var(--chip);border-radius:7px;padding:4px 10px;font-size:12px;font-weight:600;color:var(--ink)}
-.liked-pill button{background:none;border:none;cursor:pointer;font-size:14px;color:var(--muted);line-height:1;padding:0}
-.liked-pill button:hover{color:var(--accent)}
-
-.results{position:relative;z-index:2;max-width:1100px;margin:32px auto 0;padding:0 20px 48px}
-.res-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:20px;text-align:center;text-transform:uppercase}
-.logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-@media(max-width:1024px){.logo-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:768px){.logo-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:480px){.logo-grid{grid-template-columns:repeat(2,1fr)}}
-
-.lc{
-  position:relative;border-radius:16px;overflow:hidden;cursor:pointer;
-  aspect-ratio:1.4/1;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;transition:transform .2s cubic-bezier(.34,1.4,.64,1),box-shadow .2s;
-  border:1.5px solid transparent;
-}
-.lc:hover{transform:scale(1.04);box-shadow:0 8px 28px rgba(0,0,0,.18)}
-.lc-top-badge{position:absolute;top:8px;left:8px;font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.22);color:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.3);border-radius:5px;padding:2px 7px;z-index:2;backdrop-filter:blur(4px)}
-.lc-like{position:absolute;top:8px;right:8px;z-index:2;width:28px;height:28px;border-radius:7px;cursor:pointer;font-size:14px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;transition:all .15s;backdrop-filter:blur(4px);color:rgba(255,255,255,.8)}
-.lc-like:hover{background:rgba(255,255,255,.3);color:#fff}
-.lc-like.liked{background:var(--accent);border-color:var(--accent);color:#fff}
-.lc-name{font-size:15px;font-weight:700;text-align:center;letter-spacing:-.2px;padding:0 10px;line-height:1.2;word-break:break-all;z-index:1}
-.avail-dot{position:absolute;bottom:8px;right:10px;width:8px;height:8px;border-radius:50%;z-index:2}
-.avail-dot.available{background:#4ade80;box-shadow:0 0 6px rgba(74,222,128,.8)}
-.avail-dot.checking{background:#fbbf24;animation:blink 1s ease-in-out infinite}
-.avail-dot.unavailable{background:#f87171}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.lc-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;opacity:0;transition:opacity .18s;z-index:3;border-radius:16px}
-.lc:hover .lc-overlay{opacity:1}
-.lov-btn{font-size:11px;font-weight:700;padding:7px 20px;border-radius:8px;text-decoration:none;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;width:120px;transition:opacity .1s}
-.lov-buy{background:var(--white);color:var(--black)}
-.lov-chk{background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.4)}
-.lov-buy:hover{opacity:.88}
-.lov-chk:hover{background:rgba(255,255,255,.28)}
-
-.cs-0{background:#f5a623;color:#7a4f00}.cs-0 .lc-name{color:#3d2600;font-family:'Syne',sans-serif}
-.cs-1{background:#f0f0ed;color:#2c2c2c}.cs-1 .lc-name{color:#1a1a1a;font-family:'Space Grotesk',sans-serif;font-weight:600}
-.cs-2{background:#f8f8f8;color:#111}.cs-2 .lc-name{color:#111;font-family:'Montserrat',sans-serif;letter-spacing:.5px;font-size:13px}
-.cs-3{background:#1a1a2e;color:#e8d5ff}.cs-3 .lc-name{color:#e8d5ff;font-family:'Syne',sans-serif;font-size:13px}
-.cs-4{background:#0a2240;color:#4ab3f4}.cs-4 .lc-name{color:#fff;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}
-.cs-5{background:#1e3a2f;color:#7dcfb6}.cs-5 .lc-name{color:#a8edda;font-family:'Poppins',sans-serif;font-size:13px}
-.cs-6{background:#2d1b69;color:#c4b5fd}.cs-6 .lc-name{color:#e9d5ff;font-family:'Raleway',sans-serif;font-size:14px;font-weight:800}
-.cs-7{background:#1a1a1a;color:#ff6b35}.cs-7 .lc-name{color:#ff6b35;font-family:'Space Grotesk',sans-serif;font-weight:700}
-.cs-8{background:#fff;color:#111;border:1.5px solid #e0e0e0 !important}.cs-8 .lc-name{color:#111;font-family:'DM Serif Display',sans-serif;font-size:14px;font-style:italic}
-.cs-9{background:#0f172a;color:#38bdf8}.cs-9 .lc-name{color:#38bdf8;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;letter-spacing:1px}
-.cs-10{background:#fdf2f8;color:#831843}.cs-10 .lc-name{color:#9d174d;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800}
-.cs-11{background:#f97316;color:#fff}.cs-11 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-weight:800}
-.cs-12{background:#14532d;color:#bbf7d0}.cs-12 .lc-name{color:#bbf7d0;font-family:'Poppins',sans-serif;font-size:13px}
-.cs-13{background:#312e81;color:#c7d2fe}.cs-13 .lc-name{color:#e0e7ff;font-family:'Raleway',sans-serif;font-size:13px;font-weight:800}
-.cs-14{background:#7c3aed;color:#fff}.cs-14 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-size:14px;font-weight:800}
-
-/* ===== AI LOADING ===== */
-.ai-loader{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;gap:28px}
-.ai-orb{width:90px;height:90px;position:relative}
-.ai-orb-ring{position:absolute;inset:0;border-radius:50%;border:2px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(135deg,var(--purple),var(--accent),#06b6d4,var(--purple)) border-box;animation:orb-spin 2s linear infinite}
-.ai-orb-ring2{position:absolute;inset:8px;border-radius:50%;border:2px solid transparent;background:linear-gradient(var(--bg),var(--bg)) padding-box,linear-gradient(225deg,var(--accent),var(--purple),#06b6d4,var(--accent)) border-box;animation:orb-spin 1.4s linear infinite reverse}
-.ai-orb-core{position:absolute;inset:18px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--accent));display:flex;align-items:center;justify-content:center;font-size:22px;animation:core-pulse 2s ease-in-out infinite;box-shadow:0 0 20px rgba(109,40,217,.4)}
-@keyframes orb-spin{to{transform:rotate(360deg)}}
-@keyframes core-pulse{0%,100%{transform:scale(1);box-shadow:0 0 20px rgba(109,40,217,.4)}50%{transform:scale(1.08);box-shadow:0 0 35px rgba(255,69,0,.5)}}
-.ai-loader-text{text-align:center}
-.ai-loader-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--black);letter-spacing:-.5px;margin-bottom:6px}
-.ai-loader-sub{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:16px}
-.ai-words{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:400px}
-.ai-word{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;background:var(--white);border:1.5px solid var(--border);color:var(--muted);animation:word-pop .5s cubic-bezier(.34,1.4,.64,1) both;opacity:0}
-@keyframes word-pop{0%{opacity:0;transform:translateY(8px) scale(.9)}100%{opacity:1;transform:none}}
-.ai-progress{width:240px;height:3px;background:var(--border);border-radius:3px;overflow:hidden}
-.ai-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--purple),var(--accent));border-radius:3px;animation:progress-fill 4s ease-in-out infinite}
-@keyframes progress-fill{0%{width:0%}80%{width:88%}100%{width:92%}}
-
-/* SERVICES */
-.services{position:relative;z-index:2;max-width:960px;margin:0 auto 40px;padding:0 20px}
-.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.svc-grid{grid-template-columns:repeat(1,1fr)}}
-.svc-card{border-radius:22px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;position:relative;min-height:340px;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.3,.64,1),box-shadow .25s;border:none}
-.svc-card:hover{transform:translateY(-6px) scale(1.025);box-shadow:0 20px 50px rgba(0,0,0,.22)}
-.svc-card.card-tm{background:linear-gradient(145deg,#667eea,#764ba2)}
-.svc-card.card-domain{background:linear-gradient(145deg,#06b6d4,#0284c7)}
-.svc-card.card-logo{background:linear-gradient(145deg,#f59e0b,#ef4444)}
-.svc-card.card-web{background:linear-gradient(145deg,#10b981,#059669)}
-.svc-emoji{font-size:72px;line-height:1;position:absolute;bottom:70px;right:-10px;opacity:.55;transform:rotate(-8deg);filter:drop-shadow(0 8px 24px rgba(0,0,0,.25));transition:transform .3s,opacity .3s;pointer-events:none}
-.svc-card:hover .svc-emoji{transform:rotate(0deg) scale(1.1);opacity:.75}
-.svc-content{padding:24px 22px;flex:1;display:flex;flex-direction:column;position:relative;z-index:1}
-.svc-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px}
-.svc-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px;letter-spacing:-.3px}
-.svc-desc{font-size:12px;color:rgba(255,255,255,.68);line-height:1.6;flex:1}
-.svc-footer{padding:0 22px 22px;position:relative;z-index:1}
-.svc-learn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border-radius:30px;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;transition:all .18s}
-.svc-learn:hover{background:rgba(255,255,255,.32)}
-.svc-learn-arrow{font-size:14px;transition:transform .18s}
-.svc-learn:hover .svc-learn-arrow{transform:translateX(4px)}
-.tm-card-btns{display:flex;flex-direction:column;gap:8px}
-.tm-card-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:11px;font-weight:700;padding:9px 14px;border-radius:30px;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;transition:all .18s}
-.tm-card-btn:hover{background:rgba(255,255,255,.32)}
-
-.how{position:relative;z-index:2;max-width:920px;margin:0 auto 44px;padding:0 20px}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.how-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden}
-.how-num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--border);letter-spacing:-2px;line-height:1;margin-bottom:8px}
-.how-icon{font-size:20px;margin-bottom:5px}
-.how-h{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px}
-.how-p{font-size:12px;color:var(--muted);line-height:1.6}
-@media(max-width:640px){.how-grid{grid-template-columns:1fr}}
-
-.monkb-wrap{position:relative;z-index:2;max-width:920px;margin:0 auto 40px;padding:0 20px}
-.monkb{background:linear-gradient(135deg,#0c0c0c 0%,#181830 60%,#0c0c0c 100%);border-radius:20px;padding:32px 34px;display:flex;align-items:center;justify-content:space-between;gap:22px;overflow:hidden;position:relative}
-.mb1{position:absolute;top:-50px;left:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(109,40,217,.3),transparent 70%);pointer-events:none}
-.mb2{position:absolute;bottom:-50px;right:90px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(255,69,0,.2),transparent 70%);pointer-events:none}
-.ml{position:relative;z-index:1;flex:1}
-.ml-tag{font-size:10px;font-weight:700;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px}
-.ml-title{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.15;margin-bottom:8px}
-.ml-title span{background:linear-gradient(135deg,var(--accent),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.ml-desc{font-size:13px;color:rgba(255,255,255,.48);line-height:1.6;max-width:340px}
-.ml-btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.ml-cta{background:linear-gradient(135deg,var(--accent),#c2410c);color:#fff;border-radius:9px;padding:10px 20px;font-size:13px;font-weight:700;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif}
-.ml-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:9px;padding:10px 20px;font-size:13px;font-weight:600;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif}
-.mr{position:relative;z-index:1;text-align:center;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:9px}
-.mr-emoji{font-size:52px;line-height:1}
-.mr-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:11px;padding:8px 14px}
-.mr-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:-.3px}
-.mr-sub{font-size:10px;color:rgba(255,255,255,.32);margin-top:2px}
-@media(max-width:640px){.monkb{flex-direction:column;padding:22px 18px;align-items:flex-start}.mr{align-self:center}.ml-title{font-size:21px}}
-
-footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;background:var(--white);flex-wrap:wrap;gap:10px}
-.foot-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--black)}
-.foot-made{font-size:12px;color:var(--muted)}
-.foot-links{display:flex;gap:16px;flex-wrap:wrap}
-.foot-link{font-size:12px;color:var(--muted);text-decoration:none;transition:color .15s}
-.foot-link:hover{color:var(--black)}
-@media(max-width:520px){footer{padding:16px;justify-content:center;text-align:center}}
-
-@media(max-width:640px){
-  .results,.services,.how,.monkb-wrap{padding-left:14px;padding-right:14px}
-  .stats{gap:16px;padding:0 12px}
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.7)
+  );
 }
 
-/* ===== RESULTS PAGE ===== */
-#resultsPage{display:none;position:fixed;inset:0;z-index:500;overflow-y:auto;background:var(--bg)}
-#resultsPage.open{display:block;animation:rp-in .35s cubic-bezier(.22,1,.36,1)}
-@keyframes rp-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.rp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:rgba(247,246,243,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;gap:12px}
-.rp-back{display:flex;align-items:center;gap:7px;background:var(--chip);border:1.5px solid var(--border);cursor:pointer;font-size:13px;font-weight:700;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;padding:8px 16px;border-radius:10px;transition:all .15s;flex-shrink:0}
-.rp-back:hover{background:var(--black);color:#fff;border-color:var(--black)}
-.rp-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--black);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;text-align:center}
-.rp-count{font-size:11px;font-weight:600;color:var(--muted);background:var(--chip);padding:5px 14px;border-radius:20px;flex-shrink:0}
-.rp-saved-wrap{max-width:1100px;margin:20px auto 0;padding:0 20px}
-.rp-saved-box{background:var(--white);border-radius:14px;padding:14px 18px;border:1.5px solid var(--accent);display:none}
-.rp-saved-box.show{display:block}
-.rp-saved-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.rp-saved-hd-left{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:6px}
-.saved-cnt{background:var(--accent);color:#fff;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:800}
-.rp-saved-clear{background:none;border:1px solid #fcd9c8;border-radius:6px;cursor:pointer;font-size:11px;font-weight:600;color:#f97316;padding:3px 10px;font-family:'Plus Jakarta Sans',sans-serif}
-.rp-saved-list{display:flex;flex-wrap:wrap;gap:7px}
-.rp-saved-pill{display:flex;align-items:center;gap:6px;background:#fff3ee;border:1px solid #fcd9c8;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:600;color:#c2410c}
-.rp-saved-pill button{background:none;border:none;cursor:pointer;font-size:16px;color:#f97316;line-height:1;padding:0}
-.rp-grid-wrap{max-width:1100px;margin:20px auto 60px;padding:0 20px}
-.rp-res-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;margin-bottom:18px;text-align:center;text-transform:uppercase}
-.lc{border-radius:16px;overflow:hidden;display:flex;flex-direction:column;border:1.5px solid var(--border);transition:transform .25s cubic-bezier(.34,1.3,.64,1),box-shadow .25s;animation:cardIn .4s ease both}
-@keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
-.lc:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 36px rgba(0,0,0,.15)}
-.lc-logo{display:flex;align-items:center;justify-content:center;padding:22px 12px 14px;min-height:90px;position:relative;flex:1}
-.lc-top-badge{position:absolute;top:8px;left:8px;font-size:7px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.3);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:5px;padding:2px 7px}
-.lc-avail{position:absolute;top:10px;right:10px;width:8px;height:8px;border-radius:50%}
-.lc-avail.av{background:#4ade80;box-shadow:0 0 7px rgba(74,222,128,.9)}
-.lc-avail.un{background:#f87171}
-.lc-name{font-size:13px;font-weight:700;text-align:center;padding:0 8px;line-height:1.3;word-break:break-all}
-.lc-actions{padding:8px 10px 10px;display:flex;flex-direction:column;gap:6px}
-.lc-row{display:flex;gap:6px;align-items:center}
-.lc-like{width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:17px;border:none;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;background:rgba(255,255,255,.25);color:#fff}
-.lc-like:hover{background:rgba(255,107,53,.3);transform:scale(1.1)}
-.lc-like.liked{background:var(--accent);color:#fff;box-shadow:0 3px 12px rgba(255,69,0,.5)}
-.lov-buy,.lov-chk{flex:1;font-size:10px;font-weight:700;padding:8px 4px;border-radius:9px;text-decoration:none;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;transition:all .15s;display:block}
-.lov-buy{background:rgba(255,255,255,.88);color:#111}
-.lov-buy:hover{background:#fff}
-.lov-chk{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
-.lov-chk:hover{background:rgba(255,255,255,.25)}
-.cs-0 .lc-logo{background:linear-gradient(135deg,#667eea,#764ba2)}.cs-0 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-weight:800}.cs-0 .lc-actions{background:#4c3399}
-.cs-1 .lc-logo{background:linear-gradient(135deg,#f093fb,#f5576c)}.cs-1 .lc-name{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px}.cs-1 .lc-actions{background:#b01055}
-.cs-2 .lc-logo{background:linear-gradient(135deg,#0f172a,#1e3a5f)}.cs-2 .lc-name{color:#38bdf8;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px}.cs-2 .lc-actions{background:#0a1420}
-.cs-3 .lc-logo{background:linear-gradient(135deg,#064e3b,#065f46)}.cs-3 .lc-name{color:#6ee7b7;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12px}.cs-3 .lc-actions{background:#022c22}
-.cs-4 .lc-logo{background:linear-gradient(135deg,#1c1c1c,#2d1515)}.cs-4 .lc-name{color:#ff6b35;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}.cs-4 .lc-actions{background:#100808}
-.cs-5 .lc-logo{background:linear-gradient(135deg,#fce38a,#f9a825)}.cs-5 .lc-name{color:#3d2600;font-family:'Syne',sans-serif;font-weight:900}.cs-5 .lc-actions{background:#b07900}.cs-5 .lc-like{color:#3d2600}.cs-5 .lov-buy{background:rgba(0,0,0,.7);color:#fce38a}.cs-5 .lov-chk{color:#3d2600;border-color:rgba(0,0,0,.3);background:rgba(0,0,0,.15)}
-.cs-6 .lc-logo{background:linear-gradient(135deg,#00c6ff,#0072ff)}.cs-6 .lc-name{color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px}.cs-6 .lc-actions{background:#004ecc}
-.cs-7 .lc-logo{background:linear-gradient(135deg,#c4ff61,#86efac)}.cs-7 .lc-name{color:#14532d;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900}.cs-7 .lc-actions{background:#3d8c28}.cs-7 .lc-like{color:#14532d}.cs-7 .lov-buy{background:rgba(0,0,0,.7);color:#c4ff61}.cs-7 .lov-chk{color:#14532d;border-color:rgba(0,0,0,.2);background:rgba(0,0,0,.1)}
-.cs-8 .lc-logo{background:linear-gradient(135deg,#1a1a2e,#16213e)}.cs-8 .lc-name{color:#e8d5ff;font-family:'Syne',sans-serif;font-size:12px;font-weight:700}.cs-8 .lc-actions{background:#0d0d1a}
-.cs-9 .lc-logo{background:linear-gradient(135deg,#ff416c,#ff4b2b)}.cs-9 .lc-name{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px}.cs-9 .lc-actions{background:#b81a1a}
-.cs-10 .lc-logo{background:linear-gradient(135deg,#2d1b69,#5b21b6)}.cs-10 .lc-name{color:#c4b5fd;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:12px}.cs-10 .lc-actions{background:#1a0e4a}
-.cs-11 .lc-logo{background:linear-gradient(135deg,#d0d0d0,#f0f0f0)}.cs-11 .lc-name{color:#111;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12px}.cs-11 .lc-actions{background:#aaa}.cs-11 .lc-like{color:#333}.cs-11 .lov-buy{background:#111;color:#fff}.cs-11 .lov-chk{color:#333;border-color:rgba(0,0,0,.25);background:rgba(0,0,0,.08)}
-.cs-12 .lc-logo{background:linear-gradient(135deg,#0d0d0d,#1a1a1a)}.cs-12 .lc-name{color:#c4ff61;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}.cs-12 .lc-actions{background:#060606}
-.cs-13 .lc-logo{background:linear-gradient(135deg,#00b4d8,#0077b6)}.cs-13 .lc-name{color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:12px}.cs-13 .lc-actions{background:#005577}
-.cs-14 .lc-logo{background:linear-gradient(135deg,#f5af19,#f12711)}.cs-14 .lc-name{color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:12px}.cs-14 .lc-actions{background:#b01a00}
-.logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-@media(max-width:1100px){.logo-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:800px){.logo-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:520px){.logo-grid{grid-template-columns:repeat(2,1fr)}}
+.hero-content{
+  position:absolute;
+  top:50%;
+  left:8%;
+  transform:translateY(-50%);
+  z-index:2;
+}
 
-/* sec-label utility */
-.sec-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;text-align:center}
+.hero-content h1{
+  font-size:90px;
+  line-height:0.95;
+  margin-bottom:24px;
+}
+
+.hero-content p{
+  max-width:650px;
+  opacity:0.8;
+  line-height:1.8;
+  font-size:18px;
+}
+
+.hero-btn{
+  margin-top:35px;
+  display:inline-block;
+  padding:16px 34px;
+  border-radius:999px;
+  background:white;
+  color:black;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* COLLECTIONS */
+
+.collections{
+  padding:100px 8%;
+}
+
+.section-title{
+  font-size:54px;
+  margin-bottom:50px;
+  font-weight:800;
+}
+
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.collection-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:30px;
+  min-height:430px;
+  transition:0.4s ease;
+}
+
+.collection-card:hover{
+  transform:translateY(-10px) scale(1.02);
+}
+
+.collection-card img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.collection-content{
+  position:relative;
+  z-index:2;
+  padding:34px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  height:100%;
+}
+
+.collection-title{
+  font-size:42px;
+  line-height:1.05;
+  max-width:220px;
+}
+
+.collection-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  padding:12px 24px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  color:white;
+  text-decoration:none;
+}
+
+/* PRODUCTS */
+
+.products{
+  padding:40px 8% 100px;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.product-card{
+  background:#0d1a29;
+  border-radius:24px;
+  overflow:hidden;
+  transition:0.4s;
+}
+
+.product-card:hover{
+  transform:translateY(-8px);
+}
+
+.product-card img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+}
+
+.product-info{
+  padding:22px;
+}
+
+.product-info h3{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.buy-btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:999px;
+  background:white;
+  color:black;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  padding:40px;
+  opacity:0.6;
+}
+
+/* ANIMATION */
+
+@keyframes slide{
+
+  0%{
+    transform:translateX(0);
+  }
+
+  30%{
+    transform:translateX(0);
+  }
+
+  35%{
+    transform:translateX(-100%);
+  }
+
+  65%{
+    transform:translateX(-100%);
+  }
+
+  70%{
+    transform:translateX(-200%);
+  }
+
+  100%{
+    transform:translateX(-200%);
+  }
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .hero-content h1{
+    font-size:52px;
+  }
+
+  .section-title{
+    font-size:36px;
+  }
+
+  .collection-title{
+    font-size:30px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+}
+
 </style>
 </head>
 <body>
-<div id="homePage">
-<div class="mesh"></div>
-<div class="fe fe1">🌐</div>
-<div class="fe fe2">✨</div>
-<div class="fe fe3">🚀</div>
-<div class="fe fe4">💡</div>
-<div class="fe fe5">⚡</div>
 
-<nav>
-  <div class="logo"><div class="logo-dot"></div>orbit07<span style="color:var(--muted)">.ai</span></div>
-  <div class="nav-pill">Orbit07 AI · Free</div>
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+  <div class="logo">
+    FRAMEVAULT
+  </div>
+
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Collections</a>
+    <a href="#">Products</a>
+    <a href="#">Contact</a>
+  </div>
+
 </nav>
 
-<div class="hero">
-  <div class="hero-tag"><span>✦</span> Orbit07 AI · India's Favourite</div>
+<!-- HERO SLIDER -->
 
-  <!-- Title row with 3D icons -->
-  <div class="hero-title-row">
-    <div class="hero-icon-3d left">🌐</div>
-    <h1>Find your<br><em>perfect domain</em><br>instantly</h1>
-    <div class="hero-icon-3d right">🚀</div>
-  </div>
+<section class="hero-slider">
 
-  <p class="hero-sub">Describe your business in any language — Orbit07 AI generates unlimited creative domain names in seconds</p>
+  <div class="slides">
 
-  <!-- UNIFIED SEARCH CARD -->
-  <div class="search-card">
-    <!-- Top: Input + Generate -->
-    <div class="search-top">
-      <span class="search-ai-icon">✦</span>
-      <input id="bi" type="text" placeholder="e.g. Mumbai restaurant, fashion boutique, yoga studio...">
-      <button class="gen-btn" onclick="go()">
-        <span class="gen-btn-icon">✦</span>
-        <span class="gen-btn-text">Generate</span>
-      </button>
+    <!-- SLIDE 1 -->
+
+    <div class="slide">
+
+      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop">
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <h1>
+          Luxury<br>
+          Wall Frames
+        </h1>
+
+        <p>
+          Premium interior wall frames designed for modern homes and luxury spaces.
+        </p>
+
+        <a href="#" class="hero-btn">
+          Explore Now
+        </a>
+
+      </div>
+
     </div>
 
-    <!-- Bottom: Industry chooser + TLD selector -->
-    <div class="search-bottom">
-      <!-- Industry -->
-      <div class="ind-select-wrap" id="indSelectWrap" onclick="toggleIndDD()">
-        <span class="ind-select-label">Industry</span>
-        <span class="ind-selected" id="indSelected">All Industries</span>
-        <span class="ind-arrow" id="indArrow">▾</span>
-        <div class="ind-dropdown" id="indDropdown">
-          <div class="ind-opt active" data-query="" data-label="All Industries" onclick="pickInd(this)"><span class="ind-opt-emoji">✦</span><span class="ind-opt-name">All Industries</span></div>
-          <div class="ind-opt" data-query="online grocery delivery" data-label="🛒 Grocery" onclick="pickInd(this)"><span class="ind-opt-emoji">🛒</span><span class="ind-opt-name">Grocery</span></div>
-          <div class="ind-opt" data-query="digital marketing agency" data-label="📣 Marketing" onclick="pickInd(this)"><span class="ind-opt-emoji">📣</span><span class="ind-opt-name">Marketing</span></div>
-          <div class="ind-opt" data-query="women fashion boutique" data-label="👗 Fashion" onclick="pickInd(this)"><span class="ind-opt-emoji">👗</span><span class="ind-opt-name">Fashion</span></div>
-          <div class="ind-opt" data-query="CA accounting firm" data-label="📊 CA / Finance" onclick="pickInd(this)"><span class="ind-opt-emoji">📊</span><span class="ind-opt-name">CA / Finance</span></div>
-          <div class="ind-opt" data-query="online coaching education platform" data-label="🎓 Education" onclick="pickInd(this)"><span class="ind-opt-emoji">🎓</span><span class="ind-opt-name">Education</span></div>
-          <div class="ind-opt" data-query="restaurant food delivery" data-label="🍽️ Restaurant" onclick="pickInd(this)"><span class="ind-opt-emoji">🍽️</span><span class="ind-opt-name">Restaurant</span></div>
-          <div class="ind-opt" data-query="real estate property India" data-label="🏠 Real Estate" onclick="pickInd(this)"><span class="ind-opt-emoji">🏠</span><span class="ind-opt-name">Real Estate</span></div>
-          <div class="ind-opt" data-query="healthcare clinic hospital" data-label="🏥 Healthcare" onclick="pickInd(this)"><span class="ind-opt-emoji">🏥</span><span class="ind-opt-name">Healthcare</span></div>
-          <div class="ind-opt" data-query="travel agency tours India" data-label="✈️ Travel" onclick="pickInd(this)"><span class="ind-opt-emoji">✈️</span><span class="ind-opt-name">Travel</span></div>
-          <div class="ind-opt" data-query="software IT company India" data-label="💻 IT / Software" onclick="pickInd(this)"><span class="ind-opt-emoji">💻</span><span class="ind-opt-name">IT / Software</span></div>
-          <div class="ind-opt" data-query="beauty salon spa" data-label="💆 Beauty & Spa" onclick="pickInd(this)"><span class="ind-opt-emoji">💆</span><span class="ind-opt-name">Beauty & Spa</span></div>
-          <div class="ind-opt" data-query="gym fitness center" data-label="💪 Fitness" onclick="pickInd(this)"><span class="ind-opt-emoji">💪</span><span class="ind-opt-name">Fitness</span></div>
-          <div class="ind-opt" data-query="law firm legal services India" data-label="⚖️ Legal" onclick="pickInd(this)"><span class="ind-opt-emoji">⚖️</span><span class="ind-opt-name">Legal</span></div>
-          <div class="ind-opt" data-query="ecommerce online store India" data-label="🛍️ E-Commerce" onclick="pickInd(this)"><span class="ind-opt-emoji">🛍️</span><span class="ind-opt-name">E-Commerce</span></div>
-          <div class="ind-opt" data-query="photography studio" data-label="📸 Photography" onclick="pickInd(this)"><span class="ind-opt-emoji">📸</span><span class="ind-opt-name">Photography</span></div>
-          <div class="ind-opt" data-query="wedding planning event management" data-label="💍 Events" onclick="pickInd(this)"><span class="ind-opt-emoji">💍</span><span class="ind-opt-name">Events</span></div>
-          <div class="ind-opt" data-query="interior design home decor" data-label="🛋️ Interior" onclick="pickInd(this)"><span class="ind-opt-emoji">🛋️</span><span class="ind-opt-name">Interior</span></div>
-          <div class="ind-opt" data-query="automotive car service" data-label="🚗 Automotive" onclick="pickInd(this)"><span class="ind-opt-emoji">🚗</span><span class="ind-opt-name">Automotive</span></div>
-          <div class="ind-opt" data-query="fintech payments startup India" data-label="💳 Fintech" onclick="pickInd(this)"><span class="ind-opt-emoji">💳</span><span class="ind-opt-name">Fintech</span></div>
-          <div class="ind-opt" data-query="online pharmacy medicine delivery" data-label="💊 Pharma" onclick="pickInd(this)"><span class="ind-opt-emoji">💊</span><span class="ind-opt-name">Pharma</span></div>
-          <div class="ind-opt" data-query="pet care grooming veterinary" data-label="🐾 Pet Care" onclick="pickInd(this)"><span class="ind-opt-emoji">🐾</span><span class="ind-opt-name">Pet Care</span></div>
-          <div class="ind-opt" data-query="cloud kitchen tiffin service" data-label="🍱 Cloud Kitchen" onclick="pickInd(this)"><span class="ind-opt-emoji">🍱</span><span class="ind-opt-name">Cloud Kitchen</span></div>
-          <div class="ind-opt" data-query="news media blog portal India" data-label="📰 News / Media" onclick="pickInd(this)"><span class="ind-opt-emoji">📰</span><span class="ind-opt-name">News / Media</span></div>
-          <div class="ind-opt" data-query="gaming esports platform India" data-label="🎮 Gaming" onclick="pickInd(this)"><span class="ind-opt-emoji">🎮</span><span class="ind-opt-name">Gaming</span></div>
-          <div class="ind-opt" data-query="startup SaaS B2B product" data-label="🚀 SaaS / Startup" onclick="pickInd(this)"><span class="ind-opt-emoji">🚀</span><span class="ind-opt-name">SaaS / Startup</span></div>
-          <div class="ind-opt" data-query="kids toys children products" data-label="🧸 Kids & Toys" onclick="pickInd(this)"><span class="ind-opt-emoji">🧸</span><span class="ind-opt-name">Kids & Toys</span></div>
-          <div class="ind-opt" data-query="agriculture farming rural India" data-label="🌾 Agriculture" onclick="pickInd(this)"><span class="ind-opt-emoji">🌾</span><span class="ind-opt-name">Agriculture</span></div>
-          <div class="ind-opt" data-query="logistics courier delivery service" data-label="📦 Logistics" onclick="pickInd(this)"><span class="ind-opt-emoji">📦</span><span class="ind-opt-name">Logistics</span></div>
-          <div class="ind-opt" data-query="music streaming artist platform" data-label="🎵 Music" onclick="pickInd(this)"><span class="ind-opt-emoji">🎵</span><span class="ind-opt-name">Music</span></div>
-          <div class="ind-opt" data-query="solar energy green environment startup" data-label="🌱 Green / Energy" onclick="pickInd(this)"><span class="ind-opt-emoji">🌱</span><span class="ind-opt-name">Green / Energy</span></div>
+    <!-- SLIDE 2 -->
+
+    <div class="slide">
+
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1400&auto=format&fit=crop">
+
+      <div class="overlay"></div>
+
+    </div>
+
+    <!-- SLIDE 3 -->
+
+    <div class="slide">
+
+      <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1400&auto=format&fit=crop">
+
+      <div class="overlay"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- COLLECTION SECTION -->
+
+<section class="collections">
+
+  <h2 class="section-title">
+    Collections
+  </h2>
+
+  <div class="collection-grid">
+
+    <!-- CARD 1 -->
+
+    <div class="collection-card">
+
+      <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="overlay"></div>
+
+      <div class="collection-content">
+
+        <h3 class="collection-title">
+          Modern Black Frames
+        </h3>
+
+        <a href="#" class="collection-btn">
+          Explore →
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="collection-card">
+
+      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="overlay"></div>
+
+      <div class="collection-content">
+
+        <h3 class="collection-title">
+          Wooden Luxury Art
+        </h3>
+
+        <a href="#" class="collection-btn">
+          Explore →
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="collection-card">
+
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="overlay"></div>
+
+      <div class="collection-content">
+
+        <h3 class="collection-title">
+          Premium Interior Frames
+        </h3>
+
+        <a href="#" class="collection-btn">
+          Explore →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TOP SELLING -->
+
+<section class="products">
+
+  <h2 class="section-title">
+    Top Selling Products
+  </h2>
+
+  <div class="product-grid">
+
+    <!-- PRODUCT 1 -->
+
+    <div class="product-card">
+
+      <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="product-info">
+
+        <h3>
+          Black Minimal Frame
+        </h3>
+
+        <div class="price">
+          ₹1,299
         </div>
+
+        <a href="#" class="buy-btn">
+          Buy Now
+        </a>
+
       </div>
 
-      <div class="search-bottom-divider"></div>
+    </div>
 
-      <!-- TLD -->
-      <div class="tld-select-wrap">
-        <span class="tld-label">TLD</span>
-        <div class="tld-pills">
-          <button class="tld-btn on" onclick="st(this,'.com')">.com</button>
-          <button class="tld-btn" onclick="st(this,'.in')">.in</button>
-          <button class="tld-btn" onclick="st(this,'.co.in')">.co.in</button>
-          <button class="tld-btn" onclick="st(this,'.ai')">.ai</button>
-          <button class="tld-btn" onclick="st(this,'.tv')">.tv</button>
-          <button class="tld-btn" onclick="st(this,'mix')">✦ Mix</button>
+    <!-- PRODUCT 2 -->
+
+    <div class="product-card">
+
+      <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="product-info">
+
+        <h3>
+          Wooden Art Frame
+        </h3>
+
+        <div class="price">
+          ₹1,899
         </div>
+
+        <a href="#" class="buy-btn">
+          Buy Now
+        </a>
+
       </div>
+
     </div>
-  </div>
-  <!-- /SEARCH CARD -->
 
-</div>
+    <!-- PRODUCT 3 -->
 
-<div class="stats">
-  <div class="stat"><div class="stat-n">50K+</div><div class="stat-l">Domains Generated</div></div>
-  <div class="stat"><div class="stat-n">&lt;5s</div><div class="stat-l">Generation Time</div></div>
-</div>
+    <div class="product-card">
 
-<div class="services">
-  <div class="sec-label" style="margin-bottom:20px;">Our Services</div>
-  <div class="svc-grid">
-    <div class="svc-card card-tm">
-      <div class="svc-emoji">⚖️</div>
-      <div class="svc-content">
-        <div class="svc-tag">Trademark</div>
-        <div class="svc-title">Protect Your Brand</div>
-        <div class="svc-desc">Brand naam legally secure karo. Trademark search free — registration from ₹1,499.</div>
-      </div>
-      <div class="svc-footer">
-        <div class="tm-card-btns">
-          <a href="https://www.legaldocs.co.in/trademark-search" target="_blank" class="tm-card-btn">🔎 Free TM Check →</a>
-          <a href="https://www.legaldocs.co.in/trademark-registration" target="_blank" class="tm-card-btn">✅ Register Now →</a>
+      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="product-info">
+
+        <h3>
+          Premium Gold Frame
+        </h3>
+
+        <div class="price">
+          ₹2,499
         </div>
-      </div>
-    </div>
-    <a class="svc-card card-domain" href="https://www.namecheap.com/domains/" target="_blank">
-      <div class="svc-emoji">🌐</div>
-      <div class="svc-content">
-        <div class="svc-tag">Domain Registration</div>
-        <div class="svc-title">Buy Your Domain</div>
-        <div class="svc-desc">Best price pe domain register karo. .in domains from ₹599/yr. .com from ₹899/yr.</div>
-      </div>
-      <div class="svc-footer">
-        <span class="svc-learn">Buy Domain <span class="svc-learn-arrow">→</span></span>
-      </div>
-    </a>
-    <a class="svc-card card-logo" href="https://looka.com" target="_blank">
-      <div class="svc-emoji">🎨</div>
-      <div class="svc-content">
-        <div class="svc-tag">Business Logo</div>
-        <div class="svc-title">Free Logo Banao</div>
-        <div class="svc-desc">AI se professional logo instantly ready. Koi designer ki zaroorat nahi.</div>
-      </div>
-      <div class="svc-footer">
-        <span class="svc-learn">Generate Free <span class="svc-learn-arrow">→</span></span>
-      </div>
-    </a>
-    <div class="svc-card card-web">
-      <div class="svc-emoji">💻</div>
-      <div class="svc-content">
-        <div class="svc-tag">Website · ₹199/month</div>
-        <div class="svc-title">Website Banwao</div>
-        <div class="svc-desc">Professional website sirf ₹199/month mein. Indian entrepreneurs ke liye perfect.</div>
-      </div>
-      <div class="svc-footer">
-        <span class="svc-learn">Get Started <span class="svc-learn-arrow">→</span></span>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="how" id="how">
-  <div class="sec-label" style="margin-bottom:14px;">How It Works</div>
-  <div class="how-grid">
-    <div class="how-card">
-      <div class="how-icon">✍️</div>
-      <div class="how-num">01</div>
-      <div class="how-h">Describe your business</div>
-      <div class="how-p">Type in English, Hindi, or Hinglish. More detail = better names.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-icon">✨</div>
-      <div class="how-num">02</div>
-      <div class="how-h">Orbit07 generates names</div>
-      <div class="how-p">Orbit07 AI instantly generates unlimited creative, brandable domain names.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-icon">🚀</div>
-      <div class="how-num">03</div>
-      <div class="how-h">Save, buy & launch</div>
-      <div class="how-p">Heart favourites, check availability, buy instantly.</div>
-    </div>
-  </div>
-</div>
+        <a href="#" class="buy-btn">
+          Buy Now
+        </a>
 
-<div class="monkb-wrap">
-  <div class="monkb">
-    <div class="mb1"></div><div class="mb2"></div>
-    <div class="ml">
-      <div class="ml-tag">Powered by Orbit07</div>
-      <div class="ml-title">Sell more on Instagram<br>with <span>MONKB</span></div>
-      <div class="ml-desc">Link in Bio + Auto DM + Order Management — everything an Instagram seller needs.</div>
-      <div class="ml-btns">
-        <a href="#" class="ml-cta">🚀 Try MONKB Free</a>
-        <a href="#" class="ml-ghost">Learn More →</a>
       </div>
-    </div>
-    <div class="mr">
-      <div class="mr-emoji">🐒</div>
-      <div class="mr-badge">
-        <div class="mr-name">MONKB</div>
-        <div class="mr-sub">by Orbit07</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<footer>
-  <div class="foot-logo">orbit07.ai</div>
-  <div class="foot-made">Made with ❤️ in India</div>
-  <div class="foot-links">
-    <a class="foot-link" href="#">Privacy</a>
-    <a class="foot-link" href="#">Terms</a>
+    </div>
+
   </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+  © 2026 FRAMEVAULT. All rights reserved.
 </footer>
 
-<script>
-const GROQ_KEY='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';
-let tl='.com';
-let indQuery='';
-let liked=JSON.parse(localStorage.getItem('o7_liked')||'[]');
-const CS=15;
-
-// ---- Industry dropdown ----
-function toggleIndDD(e){
-  if(e)e.stopPropagation();
-  const dd=document.getElementById('indDropdown');
-  const wrap=document.getElementById('indSelectWrap');
-  const arrow=document.getElementById('indArrow');
-  const isOpen=dd.classList.contains('open');
-  dd.classList.toggle('open',!isOpen);
-  wrap.classList.toggle('open',!isOpen);
-}
-function pickInd(el){
-  event.stopPropagation();
-  document.querySelectorAll('.ind-opt').forEach(o=>o.classList.remove('active'));
-  el.classList.add('active');
-  indQuery=el.dataset.query||'';
-  document.getElementById('indSelected').textContent=el.dataset.label||'All Industries';
-  document.getElementById('indDropdown').classList.remove('open');
-  document.getElementById('indSelectWrap').classList.remove('open');
-  // If industry picked and input empty, fill input
-  if(indQuery && !document.getElementById('bi').value.trim()){
-    document.getElementById('bi').value=indQuery;
-  }
-}
-// Close dropdown on outside click
-document.addEventListener('click',function(e){
-  if(!document.getElementById('indSelectWrap').contains(e.target)){
-    document.getElementById('indDropdown').classList.remove('open');
-    document.getElementById('indSelectWrap').classList.remove('open');
-  }
-});
-
-function st(el,v){
-  document.querySelectorAll('.tld-btn').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');tl=v;
-}
-
-function openResults(){
-  document.getElementById('homePage').style.display='none';
-  const rp=document.getElementById('resultsPage');
-  rp.classList.add('open');rp.scrollTop=0;
-}
-function goHome(){
-  document.getElementById('homePage').style.display='block';
-  document.getElementById('resultsPage').classList.remove('open');
-}
-
-function saveLiked(){localStorage.setItem('o7_liked',JSON.stringify(liked));renderSaved()}
-function renderSaved(){
-  const box=document.getElementById('rpSavedBox');
-  const list=document.getElementById('rpSavedList');
-  const cnt=document.getElementById('savedCnt');
-  if(!liked.length){box.classList.remove('show');return}
-  box.classList.add('show');
-  if(cnt)cnt.textContent=liked.length;
-  list.innerHTML=liked.map(d=>`<div class="rp-saved-pill"><span>${d}</span><button onclick="removeLiked('${d.replace(/'/g,"\'")}')">×</button></div>`).join('');
-}
-function removeLiked(d){
-  liked=liked.filter(x=>x!==d);saveLiked();
-  document.querySelectorAll('.lc-like').forEach(b=>{if(b.dataset.domain===d){b.classList.remove('liked');b.innerHTML='♡'}});
-}
-function clearAllLiked(){
-  liked=[];saveLiked();
-  document.querySelectorAll('.lc-like').forEach(b=>{b.classList.remove('liked');b.innerHTML='♡'});
-}
-function toggleLike(domain,btn){
-  if(liked.includes(domain)){liked=liked.filter(x=>x!==domain);btn.classList.remove('liked');btn.innerHTML='♡'}
-  else{liked.push(domain);btn.classList.add('liked');btn.innerHTML='♥'}
-  saveLiked();
-}
-
-const loadingWords=[
-  ['✦ Analyzing','🔍 Industry','💡 Brainstorming','🌐 Domains'],
-  ['🚀 Generating','✨ Creative','🎯 Brandable','💎 Names'],
-  ['⚡ AI Working','🧠 Processing','🌟 Crafting','🎨 Ideas'],
-];
-
-function showLoader(){
-  const wordSet=loadingWords[Math.floor(Math.random()*loadingWords.length)];
-  const wordsHTML=wordSet.map((w,i)=>`<div class="ai-word" style="animation-delay:${i*0.15}s">${w}</div>`).join('');
-  return`<div class="ai-loader">
-    <div class="ai-orb">
-      <div class="ai-orb-ring"></div>
-      <div class="ai-orb-ring2"></div>
-      <div class="ai-orb-core">✦</div>
-    </div>
-    <div class="ai-loader-text">
-      <div class="ai-loader-title">Orbit07 AI kaam par hai...</div>
-      <div class="ai-loader-sub">Unlimited brand names generate ho rahe hain</div>
-      <div class="ai-words">${wordsHTML}</div>
-    </div>
-    <div class="ai-progress"><div class="ai-progress-bar"></div></div>
-  </div>`;
-}
-
-async function go(){
-  let biz=document.getElementById('bi').value.trim();
-  // If input empty but industry selected, use industry query
-  if(!biz && indQuery)biz=indQuery;
-  if(!biz)return;
-
-  document.getElementById('rpTitle').textContent='"'+biz+'"';
-  document.getElementById('rpCount').textContent='Loading...';
-  document.getElementById('rpResLabel').textContent='';
-  document.getElementById('rpGrid').innerHTML=showLoader();
-  openResults();
-  renderSaved();
-
-  const industryHint=indQuery?`Industry context: ${indQuery}. `:'';
-  const prompt=`You are Orbit07, world-class domain branding AI. Generate exactly 100 unique creative brandable domain names for: "${biz}".
-${industryHint}IMPORTANT: Include names that contain the main keyword/s from the business description (keyword matching). Mix keyword-based names with creative portmanteau/brandable names.
-TLD: ${tl==='mix'?'mix of .com .in .co.in .ai .tv':tl}.
-Rules: short memorable professional, mix compound/portmanteau/suffix(-ify-ly-hub-go-now-hq)/prefix(get-my-try-), no duplicates, include keyword-match names.
-First 8: top:true, rest top:false. likely_available:true if made-up word, false if common phrase.
-Respond ONLY raw JSON array no markdown no backticks:
-[{"domain":"x.com","reason":"why","top":true,"likely_available":true}]
-All 100 required.`;
-
-  try{
-    const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+GROQ_KEY},
-      body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:8000,temperature:0.93,messages:[{role:'user',content:prompt}]})
-    });
-    const d=await r.json();
-    const raw=d.choices[0].message.content.replace(/```json|```/g,'').trim();
-    const doms=JSON.parse(raw);
-    document.getElementById('rpCount').textContent=doms.length+' names';
-    document.getElementById('rpResLabel').textContent='✦ '+doms.length+' brand names for "'+biz+'"';
-    document.getElementById('rpGrid').innerHTML=doms.map((x,i)=>{
-      const iL=liked.includes(x.domain);
-      const safe=x.domain.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-      return`<div class="lc cs-${i%CS}" title="${(x.reason||'').replace(/"/g,'&quot;')}" style="animation-delay:${Math.min(i*.025,1.2)}s">
-        <div class="lc-logo">
-          ${x.top?'<div class="lc-top-badge">✦ TOP PICK</div>':''}
-          <div class="lc-avail ${x.likely_available?'av':'un'}" title="${x.likely_available?'Likely available':'Possibly taken'}"></div>
-          <div class="lc-name">${x.domain}</div>
-        </div>
-        <div class="lc-actions">
-          <div class="lc-row">
-            <button class="lc-like${iL?' liked':''}" data-domain="${x.domain}" onclick="toggleLike('${safe}',this)">${iL?'♥':'♡'}</button>
-            <a class="lov-buy" href="https://www.namecheap.com/domains/registration/results/?domain=${encodeURIComponent(x.domain)}" target="_blank">Buy Now</a>
-            <a class="lov-chk" href="https://www.godaddy.com/domainsearch/find?checkAvail=1&domainToCheck=${encodeURIComponent(x.domain)}" target="_blank">Check</a>
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-    renderSaved();
-  }catch(e){
-    document.getElementById('rpGrid').innerHTML='<div style="text-align:center;padding:60px 20px"><div style="font-size:40px;margin-bottom:12px">😕</div><div style="font-size:14px;color:#ef4444;font-weight:600">Kuch gadbad ho gayi. Dobara try karo.</div></div>';
-    console.error(e);
-  }
-}
-document.getElementById('bi').addEventListener('keydown',e=>{if(e.key==='Enter')go()});
-</script>
-</div>
-
-<!-- RESULTS PAGE -->
-<div id="resultsPage">
-  <div class="rp-nav">
-    <button class="rp-back" onclick="goHome()">← Back</button>
-    <div class="rp-title" id="rpTitle">Results</div>
-    <div class="rp-count" id="rpCount">Loading...</div>
-  </div>
-  <div class="rp-saved-wrap">
-    <div class="rp-saved-box" id="rpSavedBox">
-      <div class="rp-saved-hd">
-        <div class="rp-saved-hd-left">❤️ Saved Domains <span class="saved-cnt" id="savedCnt">0</span></div>
-        <button class="rp-saved-clear" onclick="clearAllLiked()">Sab hatao</button>
-      </div>
-      <div class="rp-saved-list" id="rpSavedList"></div>
-    </div>
-  </div>
-  <div class="rp-grid-wrap">
-    <div class="rp-res-label" id="rpResLabel"></div>
-    <div class="logo-grid" id="rpGrid"></div>
-  </div>
-</div>
 </body>
 </html>
